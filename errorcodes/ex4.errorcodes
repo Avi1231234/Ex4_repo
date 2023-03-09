@@ -1,0 +1,436 @@
+# lines that start with # are ignored.
+
+#############################################################################################################
+############################################### Manual Grading ##############################################
+#############################################################################################################
+
+##################
+# Cosmetic coding:
+##################
+class_naming_convention					-0.2                Class name not following style conventions
+funcion_naming_convention				-0.2                Function name not following style conventions
+var_naming_convention					-0.2                Variable name not following style conventions
+function_uninformative_name				-0.2                Function name should be meaningful and informative
+function_missing_documentation			-2                	Function missing heading documentation
+var_uninformative_name					-0.2                Variable name should be meaningful and informative
+unicode									-0.2                unicode in files
+
+
+
+#############
+# General:
+#############
+# For a general comment with no penaly, use this:
+general_comment							-0
+# For miscellaneous cases that are not covered in the other errorcodes, use this:
+general_bad_style                        -2                General bad style remark
+# For extreme case of bad style, where the other errorcodes don't cover enough, use this:
+extremely_bad_style                     -4                Extremely bad style
+inefficient_code                        -2                code was written inefficiently
+general_error                           -10
+const_modifier                          -2                Didn't add const to the right of method declaration
+bad_usage_of_friend                     -5                Unnecessary usage of friend modifier - this could have been a method
+
+
+forbidden_libraries				-30		a forbidden library is used in the code
+forbidden_function				-30		a forbidden function is used in the code
+global_helpers					-2		Use local variables in helper functions
+very_unreadable_code			-5		The code is excessively unreadable or unclear
+missing_documentation			-5		Missing documentation
+bad_documentation				-3		Poorly documented code
+using_numeric_literals			-2		You are using numeric literals (magic numbers) inside your logical code. You should use constant variables or #define variables instead.
+using_string_literals			-2		You are using string literals your logical code. You should use constant variables or #define variables instead.
+bad_indentation					-0.1	There is bad indentation
+function_too_long				-4		Function is too long. You should break it to sub-functions.
+main_too_long					-5		You should break it to sub-routines.
+argument_not_const				-2		Function parameter should be defined as const, since the function has no intention of modifying its value.
+argument_not_const_main			-0		Main parameters should not be defined as const, since some UNIX APIs (getopt for example) actually do manipulate argv[] or argc
+code_repetition					-5		There is a code repetition. You should extract the common code to some shared function/code (or use one method in the other).
+implementation_not_optimal		-5		The implementation is too complex (run time / memory /...), and it could have been done simply in a less complex manner
+missing_check_if_null			-1		Your code accesses pointers without verifying first that the value of the pointer is not null.
+vla_arrays						-15		Using of arrays with unknown size is forbidden (at least use malloc)
+read_array_instead_of_char		-0.001	It's more efficient to read array of chars instead of char by char.
+
+implemented_algo_doesnt_stand_demanded_runtime		-12.5	The algorithm doensn't run in O(|N|*|L|*|A|).
+bad_naming_of_functions_or_variables				-2		Poorly named function or variable.
+not_using_dynamic_mem_alloc							-10		You should have used dynamic allocation here.
+not_using_strtod_strtol								-3		Not using demanded functions for conversion.
+too_complicated_implementation						-5		Too complicated implementation.
+realloc_too_often									-2		Realloc too often - it should be done in blocks and not every time you add an item
+documented_code_without_purpose						-3		leaving ?garbage? code in submission.
+using_forbidden_func								-3		used forbidden func in implementation
+initialization_list									-2		should have used initialization list
+
+function_should_have_been_friend			-3	the method/function should have been friend function.
+Function_should_not_have_been_friend 		-3 the method/function should not have been friend functoin
+missing_const_for_function					-4	missing const for function (can be reduced maximum 2 times).
+missing_const_for_arg						-4	missing const for argument (can be reduced maximum 3 times).
+missing_reference							-4	missing reference for argument (can be reduced maximum 3 times).
+function_should_have_been_private			-3	function/method should have been private.
+Function_should_have_been_public			-3	function/method should have been public.
+Data_field_should_have_been_private			-3	no need for the data_fied to be public
+No_need_for_a_print							-0.5	redundant print
+Return_value_should_have_been_by_refernce	-3	missing reference at return value
+Too_many_arguments							-4	first argument is this and it contains the left element.
+
+
+#############################################################################################################
+############################################# Automatic Grading #############################################
+#############################################################################################################
+
+# Add autotests error codes here:
+
+Test_1_1                    -2  Matrix::operator= test failed: Different dimensions
+Test_1_2                    -2  Matrix::operator= test failed: Different values
+
+Test_2_1                    -2  Matrix::operator[] test failed: Wrong values
+
+Test_3_1                    -2  Matrix copy constructor test failed: Different dimensions
+Test_3_2                    -2  Matrix copy constructor test failed: Different values
+
+Test_4_1                    -2  Matrix::dot test failed: Wrong values
+
+Test_5_1                    -2  Matrix::operator*(matrix) test failed: Wrong dimensions
+Test_5_2                    -2  Matrix::operator*(matrix) test failed: Wrong values
+
+Test_6_1                    -2  Matrix::operator() test failed: Wrong values
+
+Test_7_1                    -2  Matrix::operator+= test failed: Does not return reference to original matrix
+Test_7_2                    -2  Matrix::operator+= test failed: Wrong values
+Test_7_3                    -2  Matrix::operator+= test failed: += Does not accept by const reference
+
+Test_8_1                    -2  Matrix::transpose test failed: Wrong dimensions
+Test_8_2                    -2  Matrix::transpose test failed: Wrong values
+
+Test_9_1                    -2  Matrix::vectorize test failed: Wrong dimensions
+Test_9_2                    -2  Matrix::vectorize test failed: Does not return reference to original matrix
+Test_9_3                    -2  Matrix::vectorize test failed: Wrong values
+
+Test_10_1                   -2  Dense::get_activation() failed: Wrong values
+
+Test_11_1                   -2  Matrix::operator+() failed: Wrong values
+
+Test_12_1                   -2  activation::relu test failed: Changed positive values
+Test_12_2                   -2  activation::relu test failed: Didn't change negative values
+
+Test_13_1                   -2  activation::softmax operation test failed: values are not in [0,1]
+Test_13_2                   -2  activation::softmax test failed: sum doesn't add up to 1
+
+Test_14_1                   -2  Dense::operator() test failed: Wrong values
+
+Test_15_1                   -2  Matrix::operator+ test failed: Wrong values
+
+Test_16_1                   -2  Matrix::argmax test failed: Wrong values
+
+Test_17_1                   -2  Matrix read from stream test failed: Exception thrown
+Test_17_2                   -2  Matrix read from stream test failed: Wrong values
+
+Test_18_1                   -1  Matrix read from bad stream test failed: Wrong exception
+Test_18_2                   -2  Matrix read from bad stream test failed: Non-exception thrown
+Test_18_3                   -3  Matrix read from bad stream test failed: Nothing thrown
+
+Test_19_1                   -2  Large matrix test failed
+
+Test_20_1                   -2  Matrix::norm test failed: Wrong values
+
+Test_21_1                   -1  Matrix bad multiplication test failed: Wrong exception
+Test_21_2                   -2  Matrix bad multiplication test failed: Non-exception thrown
+Test_21_3                   -3  Matrix bad multiplication test failed: Nothing thrown
+
+Test_22_1                   -1  Matrix over index limits () test failed: Wrong exception
+Test_22_2                   -2  Matrix over index limits () test failed: Non-exception thrown
+Test_22_3                   -3  Matrix over index limits () test failed: Nothing thrown
+
+Test_23_1                   -1  Matrix under index limits () test failed: Wrong exception
+Test_23_2                   -2  Matrix under index limits () test failed: Non-exception thrown
+Test_23_3                   -3  Matrix under index limits () test failed: Nothing thrown
+
+Test_24_1                   -1  Matrix bad dot test failed: Wrong exception
+Test_24_2                   -2  Matrix bad dot test failed: Non-exception thrown
+Test_24_3                   -3  Matrix bad dot test failed: Nothing thrown
+
+Test_25_1                   -1  Matrix bad addition test failed: Wrong exception
+Test_25_2                   -2  Matrix bad addition test failed: Non-exception thrown
+Test_25_3                   -3  Matrix bad addition test failed: Nothing thrown
+
+Test_26_1                   -1  Matrix bad constructor dims test failed: Wrong exception
+Test_26_2                   -2  Matrix bad constructor dims test failed: Non-exception thrown
+Test_26_3                   -3  Matrix bad constructor dims test failed: Nothing thrown
+
+Test_29_1                   -2  Matrix::operator= is not a deep copy!
+
+Test_30_1                   -2  Dense getter test failed: wrong bias
+Test_30_2                   -2  Dense getter test failed: wrong weights
+
+Test_31_1                   -2  Matrix mult with scalar test failed: Wrong dimensions
+Test_31_2                   -2  Matrix mult with scalar test failed: Wrong values
+
+TestAST_1                   -3  Should not create a new Dense instance when MlpNetwork::operator() is called
+
+TestNCompilation_1_compile  -3  Dense cannot have a default constructor
+
+TestPCompilation_1_compile  -1  Matrix::operator= test failed: Different dimensions
+TestPCompilation_2_compile  -1  Matrix::operator[] does not work with const
+TestPCompilation_3_compile  -1  Matrix::operator*(matrix) does not work with const
+TestPCompilation_4_compile  -1  Matrix::operator() does not work with const
+TestPCompilation_5_compile  -1  MlpNetwork::operator() does not work with const
+TestPCompilation_6_compile  -1  Matrix::get_rows or Matrix::get_cols does not work with const
+TestPCompilation_7_compile  -1  activation functions do not work with const
+TestPCompilation_8_compile  -1  Matrix::operator+= does not work with const
+TestPCompilation_9_compile  -1  Dense getters (or one of them) do not work with const
+TestPCompilation_10_compile -1  Matrix::sum does not work with const
+TestPCompilation_11_compile -1  Matrix::argmax does not work with const
+TestPCompilation_12_compile -1  Matrix mult with scalar does not work with const
+
+# Various required autotesting errorcodes:
+
+Test_1_valgrind             -0  Matrix::operator= test failed: leak detected
+Test_2_valgrind             -0  Matrix::operator[] test failed: leak detected
+Test_3_valgrind             -0  Matrix copy constructor test failed: leak detected
+Test_4_valgrind             -0  Matrix::dot test failed: leak detected
+Test_5_valgrind             -0  Matrix::operator*(matrix) test failed: leak detected
+Test_6_valgrind             -0  Matrix::operator() test failed: leak detected
+Test_7_valgrind             -0  Matrix::operator+= test failed: leak detected
+Test_8_valgrind             -0  Matrix::transpose test failed: leak detected
+Test_9_valgrind             -0  Matrix::vectorize test failed: leak detected
+Test_10_valgrind            -0  Dense::get_activation() failed: leak detected
+Test_11_valgrind            -0  Matrix::operator+() failed: leak detected
+Test_12_valgrind            -0  activation::relu test failed: leak detected
+Test_13_valgrind            -0  activation::softmax operation test failed: leak detected
+Test_14_valgrind            -0  Dense::operator() test failed: leak detected
+Test_15_valgrind            -0  Matrix::operator+ test failed: leak detected
+Test_16_valgrind            -0  Matrix::argmax test failed: leak detected
+Test_17_valgrind            -0  Matrix read from stream test failed: leak detected
+Test_18_valgrind            -0  Matrix read from bad stream test failed: leak detected
+Test_19_valgrind            -0  Large matrix test failed: leak detected
+Test_20_valgrind            -0  Matrix::norm test failed: leak detected
+Test_21_valgrind            -0  Matrix bad multiplication test failed: leak detected
+Test_22_valgrind            -0  Matrix over index limits () test failed: leak detected
+Test_23_valgrind            -0  Matrix under index limits () test failed: leak detected
+Test_24_valgrind            -0  Matrix bad dot test failed: leak detected
+Test_25_valgrind            -0  Matrix bad addition test failed: leak detected
+Test_26_valgrind            -0  Matrix bad constructor dims test failed: leak detected
+Test_27_valgrind            -0  Matrix constructor: leak detected
+Test_28_valgrind            -0  Matrix operator=: leak detected
+Test_29_valgrind            -0  Matrix::operator=: leak detected
+Test_30_valgrind            -0  Dense getter test failed: leak detected
+Test_31_valgrind            -0  Matrix mult with scalar test failed: leak detected
+
+
+Test_1_segfault             -2  Matrix::operator= test failed: segfault
+Test_2_segfault             -2  Matrix::operator[] test failed: segfault
+Test_3_segfault             -2  Matrix copy constructor test failed: segfault
+Test_4_segfault             -2  Matrix::dot test failed: segfault
+Test_5_segfault             -2  Matrix::operator*(matrix) test failed: segfault
+Test_6_segfault             -2  Matrix::operator() test failed: segfault
+Test_7_segfault             -2  Matrix::operator+= test failed: segfault
+Test_8_segfault             -2  Matrix::transpose test failed: segfault
+Test_9_segfault             -2  Matrix::vectorize test failed: segfault
+Test_10_segfault            -2  Dense::get_activation() failed: segfault
+Test_11_segfault            -2  Matrix::operator+() failed: segfault
+Test_12_segfault            -2  activation::relu test failed: segfault
+Test_13_segfault            -2  activation::softmax operation test failed: segfault
+Test_14_segfault            -2  Dense::operator() test failed: segfault
+Test_15_segfault            -2  Matrix::operator+ test failed: segfault
+Test_16_segfault            -2  Matrix::argmax test failed: segfault
+Test_17_segfault            -2  Matrix read from stream test failed: segfault
+Test_18_segfault            -3  Matrix read from bad stream test failed: segfault
+Test_19_segfault            -2  Large matrix test failed: segfault
+Test_20_segfault            -2  Matrix::norm test failed: segfault
+Test_21_segfault            -3  Matrix bad multiplication test failed: segfault
+Test_22_segfault            -3  Matrix over index limits () test failed: segfault
+Test_23_segfault            -3  Matrix under index limits () test failed: segfault
+Test_24_segfault            -3  Matrix bad dot test failed: segfault
+Test_25_segfault            -3  Matrix bad addition test failed: segfault
+Test_26_segfault            -3  Matrix bad constructor dims test failed: segfault
+Test_27_segfault            -3  Matrix constructor: segfault
+Test_28_segfault            -3  Matrix operator=: segfault
+Test_29_segfault            -2  Matrix::operator=: segfault
+Test_30_segfault            -2  Dense getter test failed: segfault
+Test_31_segfault            -2  Matrix mult with scalar test failed: segfault
+
+Test_1_timeout              -2  Matrix::operator= test failed: timeout
+Test_2_timeout              -2  Matrix::operator[] test failed: timeout
+Test_3_timeout              -2  Matrix copy constructor test failed: timeout
+Test_4_timeout              -2  Matrix::dot test failed: timeout
+Test_5_timeout              -2  Matrix::operator*(matrix) test failed: timeout
+Test_6_timeout              -2  Matrix::operator() test failed: timeout
+Test_7_timeout              -2  Matrix::operator+= test failed: timeout
+Test_8_timeout              -2  Matrix::transpose test failed: timeout
+Test_9_timeout              -2  Matrix::vectorize test failed: timeout
+Test_10_timeout             -2  Dense::get_activation() failed: timeout
+Test_11_timeout             -2  Matrix::operator+() failed: timeout
+Test_12_timeout             -2  activation::relu test failed: timeout
+Test_13_timeout             -2  activation::softmax operation test failed: timeout
+Test_14_timeout             -2  Dense::operator() test failed: timeout
+Test_15_timeout             -2  Matrix::operator+ test failed: timeout
+Test_16_timeout             -2  Matrix::argmax test failed: timeout
+Test_17_timeout             -2  Matrix read from stream test failed: timeout
+Test_18_timeout             -3  Matrix read from bad stream test failed: timeout
+Test_19_timeout             -2  Large matrix test failed: timeout
+Test_20_timeout             -2  Matrix::norm test failed: timeout
+Test_21_timeout             -3  Matrix bad multiplication test failed: timeout
+Test_22_timeout             -3  Matrix over index limits () test failed: timeout
+Test_23_timeout             -3  Matrix under index limits () test failed: timeout
+Test_24_timeout             -3  Matrix bad dot test failed: timeout
+Test_25_timeout             -3  Matrix bad addition test failed: timeout
+Test_26_timeout             -3  Matrix bad constructor dims test failed: timeout
+Test_27_timeout             -3  Matrix constructor: timeout
+Test_28_timeout             -3  Matrix operator=: timeout
+Test_29_timeout             -2  Matrix::operator=: timeout
+Test_30_timeout             -2  Dense getter test failed: timeout
+Test_31_timeout             -2  Matrix mult with scalar test failed: timeout
+
+Test_1_compile              -2  Matrix::operator= test failed: compile
+Test_2_compile              -2  Matrix::operator[] test failed: compile
+Test_3_compile              -2  Matrix copy constructor test failed: compile
+Test_4_compile              -2  Matrix::dot test failed: compile
+Test_5_compile              -2  Matrix::operator*(matrix) test failed: compile
+Test_6_compile              -2  Matrix::operator() test failed: compile
+Test_7_compile              -2  Matrix::operator+= test failed: compile
+Test_8_compile              -2  Matrix::transpose test failed: compile
+Test_9_compile              -2  Matrix::vectorize test failed: compile
+Test_10_compile             -2  Dense::get_activation() failed: compile
+Test_11_compile             -2  Matrix::operator+() failed: compile
+Test_12_compile             -2  activation::relu test failed: compile
+Test_13_compile             -2  activation::softmax operation test failed: compile
+Test_14_compile             -2  Dense::operator() test failed: compile
+Test_15_compile             -2  Matrix::operator+ test failed: compile
+Test_16_compile             -2  Matrix::argmax test failed: compile
+Test_17_compile             -2  Matrix read from stream test failed: compile
+Test_18_compile             -3  Matrix read from bad stream test failed: compile
+Test_19_compile             -2  Large matrix test failed: compile
+Test_20_compile             -2  Matrix::norm test failed: compile
+Test_21_compile             -3  Matrix bad multiplication test failed: compile
+Test_22_compile             -3  Matrix over index limits () test failed: compile
+Test_23_compile             -3  Matrix under index limits () test failed: compile
+Test_24_compile             -3  Matrix bad dot test failed: compile
+Test_25_compile             -3  Matrix bad addition test failed: compile
+Test_26_compile             -3  Matrix bad constructor dims test failed: compile
+Test_27_compile             -3  Matrix constructor: compile
+Test_28_compile             -3  Matrix operator=: compile
+Test_29_compile             -2  Matrix::operator=: compile
+Test_30_compile             -2  Dense getter test failed: compile
+Test_31_compile             -2  Matrix mult with scalar test failed: compile
+
+######################### Valgrind Codes #########################
+
+valgrind_penalty_invalid_read/write_1		-0.5		Valgrind detected at least 1 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_2		-1		Valgrind detected at least 2 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_3		-1.5		Valgrind detected at least 3 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_4		-2		Valgrind detected at least 4 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_5		-2.5		Valgrind detected at least 5 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_6		-3		Valgrind detected at least 6 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_7		-3.5		Valgrind detected at least 7 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_8		-4		Valgrind detected at least 8 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_9		-4.5		Valgrind detected at least 9 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_10		-5		Valgrind detected at least 10 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_11		-5.5		Valgrind detected at least 11 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_12		-6		Valgrind detected at least 12 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_13		-6.5		Valgrind detected at least 13 invalid read/writes during testing
+valgrind_penalty_invalid_read/write_14		-7		Valgrind detected at least 14 invalid read/writes during testing
+
+
+valgrind_penalty_memory_leaks_1		-1		Valgrind detected at least 1 memory leak errors during testing
+valgrind_penalty_memory_leaks_2		-2		Valgrind detected at least 2 memory leak errors during testing
+valgrind_penalty_memory_leaks_3		-3		Valgrind detected at least 3 memory leak errors during testing
+valgrind_penalty_memory_leaks_4		-4		Valgrind detected at least 4 memory leak errors during testing
+valgrind_penalty_memory_leaks_5		-5		Valgrind detected at least 5 memory leak errors during testing
+valgrind_penalty_memory_leaks_6		-6		Valgrind detected at least 6 memory leak errors during testing
+valgrind_penalty_memory_leaks_7		-7		Valgrind detected at least 7 memory leak errors during testing
+valgrind_penalty_memory_leaks_8		-8		Valgrind detected at least 8 memory leak errors during testing
+valgrind_penalty_memory_leaks_9		-9		Valgrind detected at least 9 memory leak errors during testing
+valgrind_penalty_memory_leaks_10	-10		Valgrind detected at least 10 memory leak errors during testing
+
+valgrind_penalty_uninitialised_values_1			-0.2		Valgrind detected at least 1 uninitialised values during testing
+valgrind_penalty_uninitialised_values_2			-0.4		Valgrind detected at least 2 uninitialised values during testing
+valgrind_penalty_uninitialised_values_3			-0.6		Valgrind detected at least 3 uninitialised values during testing
+valgrind_penalty_uninitialised_values_4			-0.8		Valgrind detected at least 4 uninitialised values during testing
+valgrind_penalty_uninitialised_values_5			-1				Valgrind detected at least 5 uninitialised values during testing
+valgrind_penalty_uninitialised_values_6			-1.2		Valgrind detected at least 6 uninitialised values during testing
+valgrind_penalty_uninitialised_values_7			-1.4		Valgrind detected at least 7 uninitialised values during testing
+valgrind_penalty_uninitialised_values_8			-1.6		Valgrind detected at least 8 uninitialised values during testing
+valgrind_penalty_uninitialised_values_9			-1.8		Valgrind detected at least 9 uninitialised values during testing
+valgrind_penalty_uninitialised_values_10		-2				Valgrind detected at least 10 uninitialised values during testing
+valgrind_penalty_uninitialised_values_11		-2.2		Valgrind detected at least 11 uninitialised values during testing
+valgrind_penalty_uninitialised_values_12		-2.4		Valgrind detected at least 12 uninitialised values during testing
+valgrind_penalty_uninitialised_values_13		-2.6		Valgrind detected at least 13 uninitialised values during testing
+valgrind_penalty_uninitialised_values_14		-2.8		Valgrind detected at least 14 uninitialised values during testing
+valgrind_penalty_uninitialised_values_15		-3				Valgrind detected at least 15 uninitialised values during testing
+
+segmentation_fault_penalty_1			-10		You had 1 segmentation faults in your program.
+segmentation_fault_penalty_2			-10.5		You had 2 segmentation faults in your program.
+segmentation_fault_penalty_3			-11		You had 3 segmentation faults in your program.
+segmentation_fault_penalty_4			-11.5		You had 4 segmentation faults in your program.
+segmentation_fault_penalty_5			-12		You had 5 segmentation faults in your program.
+segmentation_fault_penalty_6			-12.5		You had 6 segmentation faults in your program.
+segmentation_fault_penalty_7			-13		You had 7 segmentation faults in your program.
+segmentation_fault_penalty_8			-13.5		You had 8 segmentation faults in your program.
+segmentation_fault_penalty_9			-14		You had 9 segmentation faults in your program.
+segmentation_fault_penalty_10			-14.5		You had 10 segmentation faults in your program.
+segmentation_fault_penalty_11			-15		You had 11 segmentation faults in your program.
+segmentation_fault_penalty_12			-15.5		You had 12 segmentation faults in your program.
+segmentation_fault_penalty_13			-16		You had 13 segmentation faults in your program.
+segmentation_fault_penalty_14			-16.5		You had 14 segmentation faults in your program.
+segmentation_fault_penalty_15			-20		You had 15 segmentation faults in your program.
+
+
+######################### Coding Style codes #########################
+
+CodingStyleError_clang-diagnostic-error										-0		General Failure during codingStyle Check. May be caused by compilation issues.
+CodingStyleError_readability-identifier-naming								-0		Your code did not follow the naming convention.
+CodingStyleError_readability-non-const-parameter							-0		You had a parameter that could have been pointer to const.
+CodingStyleError_readability-magic-numbers									-0		You may have had magic numbers in your code.
+CodingStyleError_readability-redundant-control-flow							-0		You have a redundant 'return' or 'continue' statement.
+CodingStyleError_readability-inconsistent-declaration-parameter-name		-0		You have a function with parameter names that are inconsistent between declaration and definition.
+CodingStyleError_readability-avoid-const-params-in-decls					-0		You have const qualified parameters in function declaration, but this has no effect.
+CodingStyleError_readability-make-member-function-const						-0		You have a member function that could have been marked const.
+CodingStyleError_readability-uppercase-literal-suffix						-0		You have a literal with a lowercase suffix in your code.
+CodingStyleError_readability-simplify-boolean-expr							-0		You have a boolean expression using boolean constants that can be simplified.
+CodingStyleError_readability-function-size -10 You have a function which is longer than 50 lines.
+CodingStyleError_readability-braces-around-statements -0 You have a statement (such as for, if, etc.) without braces.
+CodingStyleError_readability-named-parameter								-0		You have a function with an unnamed parameter.
+CodingStyleError_readability-qualified-auto								-0		You use auto for pointer, consider using pointer sign.
+CodingStyleError_readability-static-accessed-through-instance								-0		You access static method/property through the instance.
+CodingStyleError_readability-const-return-type								-0		You return const value unnecessarily.
+CodingStyleError_clang-diagnostic-gnu-array-member-paren-init								-0		Parenthesized initialization of a member array is a GNU extension 
+
+
+CodingStylePenalty_0		-0		You have 0 codingStyle errors. No points reduced.
+CodingStylePenalty_1		-1		You have 1 codingStyle error.
+CodingStylePenalty_2		-3		You have 2 codingStyle errors.
+CodingStylePenalty_3		-3		You have 3 codingStyle errors.
+CodingStylePenalty_4		-4		You have 4 codingStyle errors.
+CodingStylePenalty_5		-5		You have 5 codingStyle errors.
+CodingStylePenalty_6		-6		You have 6 codingStyle errors.
+CodingStylePenalty_7		-7		You have 7 codingStyle errors.
+CodingStylePenalty_8		-8		You have 8 codingStyle errors.
+CodingStylePenalty_9		-9		You have 9 codingStyle errors.
+CodingStylePenalty_10		-10		You have 10 codingStyle errors.
+
+EarlySubmissionDays_1 +1 Assignment submitted 1 day early
+EarlySubmissionDays_2 +2 Assignment submitted 2 day early
+EarlySubmissionDays_3 +3 Assignment submitted 3 day early
+EarlySubmissionDays_4 +3 Assignment submitted 4 day early
+EarlySubmissionDays_5 +3 Assignment submitted 5 day early
+EarlySubmissionDays_6 +4 Assignment submitted 6 day early
+EarlySubmissionDays_7 +5 Assignment submitted 7 day early
+EarlySubmissionDays_8 +5 Assignment submitted 8 day early
+EarlySubmissionDays_9 +5 Assignment submitted 9 day early
+EarlySubmissionDays_10 +5 Assignment submitted 10 day early
+EarlySubmissionDays_11 +5 Assignment submitted 11 day early
+EarlySubmissionDays_12 +5 Assignment submitted 12 day early
+EarlySubmissionDays_13 +5 Assignment submitted 13 day early
+EarlySubmissionDays_14 +5 Assignment submitted 14 day early
+EarlySubmissionDays_15 +5 Assignment submitted 15 day early
+EarlySubmissionDays_16 +5 Assignment submitted 16 day early
+EarlySubmissionDays_17 +5 Assignment submitted 17 day early
+EarlySubmissionDays_18 +5 Assignment submitted 18 day early
+EarlySubmissionDays_19 +5 Assignment submitted 19 day early
+EarlySubmissionDays_20 +5 Assignment submitted 20 day early
+
+# Other general autotest codes:
+
+TestWerror_compile		-15		Your code compiled with warnings.
+TestPresubmit_compile		-100	Your code did not compile.
+BAD_SUBMISSION			-100	Problem with submission archive.

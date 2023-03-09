@@ -1,0 +1,8 @@
+Important concepts:
+ - reading binary data from stream.
+ - exceptions
+ - function pointers
+ - const
+ - references
+ - new / delete
+ - namespaces

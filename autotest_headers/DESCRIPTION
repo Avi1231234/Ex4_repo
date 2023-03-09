@@ -1,0 +1,9 @@
+##############################################################################################################
+################################## Directory Description - autotest_headers ##################################
+######################################### No need to edit this file ##########################################
+##############################################################################################################
+
+
+This directory should include any headers (.h files) that need to be included for autotest compilation.
+
+This directory will be added to the search path during autotest compilation.

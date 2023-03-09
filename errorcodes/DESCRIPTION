@@ -1,0 +1,30 @@
+##############################################################################################################
+##################################### Directory Description - errorcodes #####################################
+######################################### No need to edit this file ##########################################
+##############################################################################################################
+
+This directory must contain an errorcodes file called ex#.errorcodes where # is the exercise number.
+A skeleton file with various required errocodes is provided. The manual grading codes are for your
+convenience but may not be complete and you may change their penalties.
+Rename the file and add errorcodes as follows:
+
+For each test run, there should be an errorcode corresponding to that test's name, and to each possible
+non-zero exit codes for that test.
+
+For Unit tests: 			Test_#_* where # is the test number, and * is a non-zero exit code (excl. SIGSEGV
+ 							etc.).
+
+For Comparison tests: 		TestComparison_#_* where # is the test number, and * is a non-zero exit code
+							(excl. SIGSEGV etc.) for the test itself, or the word diff indicating an output
+							comparison failure.
+
+For Bonus tests:  			TestBonus_#_0 will be a positive errorcode indicating success in bonus test
+							number #.
+
+For I/O tests: 				TestIO_#_diff Indicating a comparison failure for this test.
+
+Positive Compilation Test: 	TestPCompilation_#_compile where # is the test number, indicating compilation
+							failure.
+
+Negative Compilation Test: 	TestNCompilation_#_compile indicating a successful compilation that should have
+							failed.
