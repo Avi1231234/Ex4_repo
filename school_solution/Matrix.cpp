@@ -340,7 +340,7 @@ void reduce_col(Matrix & mat, int row){
     }
 }
 
-Matrix Matrix::row_echelon_form() const{
+Matrix Matrix::reduced_row_echelon_form() const{
 
     Matrix mat_copy(*this);
     for (int i = 0; i < mat_copy.get_rows(); ++i) {

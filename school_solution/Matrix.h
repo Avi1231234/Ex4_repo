@@ -65,7 +65,7 @@ class Matrix {
     friend std::istream &operator>>(std::istream &is, Matrix &m);
 
     //TODO added by us!!!
-    Matrix row_echelon_form() const;
+    Matrix reduced_row_echelon_form() const;
 
 };
 
