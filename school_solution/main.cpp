@@ -19,7 +19,7 @@
 #define ARGS_COUNT (ARGS_START_IDX + (MLP_SIZE * 2))
 #define WEIGHTS_START_IDX ARGS_START_IDX
 #define BIAS_START_IDX (ARGS_START_IDX + MLP_SIZE)
-
+#define EPSILON 0.001
 /**
  * Given a binary file path and a matrix,
  * reads the content of the file into the matrix.
@@ -124,47 +124,116 @@ void mlpCli(MlpNetwork &mlp) noexcept(false)
     }
 }
 
+
+//TODO delete
+Matrix get_ordered_matrix(int rows, int cols)
+{
+    Matrix A = Matrix(rows, cols);
+    for(int i = 0; i < A.get_rows(); ++i)
+    {
+        for(int j = 0; j < A.get_cols(); ++j)
+        {
+            A[i * A.get_cols() + j] = i * A.get_cols() + j;
+        }
+    }
+    return A;
+}
+
+bool float_compare(float a, float b)
+{
+    return std::abs(a - b) < EPSILON;
+}
+
+int check_equal(const Matrix& A, const Matrix& B)
+{
+    // checking correct dimensions
+    if(A.get_rows() != B.get_rows() || A.get_cols() != B.get_cols())
+    {
+        std::cerr << "Matrix dimensions are not correct." << std::endl;
+        return 1;
+    }
+
+    // checking correct new values
+    for(int i = 0; i < B.get_cols() * B.get_rows(); i++)
+    {
+        if(! float_compare(A[i], B[i]))
+        {
+            std::cerr << "Values are not the same" << std::endl;
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+void fill_matrix(Matrix& M, const float* nums)
+{
+    for(int i = 0; i < M.get_rows(); ++i)
+    {
+        for(int j = 0; j < M.get_cols(); ++j)
+        {
+            M[i * M.get_cols() + j] = nums[i * M.get_cols() + j];
+        }
+    }
+}
+
+int test_reduced_matrix(float* arr, float* sol, int rows, int cols)
+{
+    // student's solution
+    Matrix M(rows, cols);
+    fill_matrix(M, arr);
+    Matrix R = M.row_echelon_form();
+
+    // our solution
+    Matrix Jake(rows, cols);
+    fill_matrix(Jake, sol);
+
+    return check_equal(Jake, R);
+}
+
 /**
  * Program's main
  * @param argc count of args
  * @param argv args values
  * @return program exit status code
  */
-int main(int argc, char **argv)
-{
-    if(argc != ARGS_COUNT)
-    {
-        std::cout << USAGE_MSG << std::endl;
-        return EXIT_FAILURE;
-    }
-
-
-    Matrix weights[MLP_SIZE];
-    Matrix biases[MLP_SIZE];
-
-    try
-    {
-        loadParameters(argv, weights, biases);
-
-    }
-    catch(const std::invalid_argument &invalidArgument)
-    {
-        std::cerr << invalidArgument.what() << std::endl;
-        return EXIT_FAILURE;
-    }
-
-    MlpNetwork mlp(weights, biases);
-
-    try
-    {
-        mlpCli(mlp);
-    }
-
-    catch(const std::invalid_argument &invalidArgument)
-    {
-        std::cerr << invalidArgument.what() << std::endl;
-        return EXIT_FAILURE;
-    }
+int main(int argc, char **argv) {
+//    if(argc != ARGS_COUNT)
+//    {
+//        std::cout << USAGE_MSG << std::endl;
+//        return EXIT_FAILURE;
+//    }
+//
+//
+//    Matrix weights[MLP_SIZE];
+//    Matrix biases[MLP_SIZE];
+//
+//    try
+//    {
+//        loadParameters(argv, weights, biases);
+//
+//    }
+//    catch(const std::invalid_argument &invalidArgument)
+//    {
+//        std::cerr << invalidArgument.what() << std::endl;
+//        return EXIT_FAILURE;
+//    }
+//
+//    MlpNetwork mlp(weights, biases);
+//
+//    try
+//    {
+//        mlpCli(mlp);
+//    }
+//
+//    catch(const std::invalid_argument &invalidArgument)
+//    {
+//        std::cerr << invalidArgument.what() << std::endl;
+//        return EXIT_FAILURE;
+//    }
+    float arr1[12] = {2, 4, 4, 0, 3, 0, 1, 2, 4, 0, 5, 1};
+    float sol1[12] = {1, 0, 0, 0.818182, 0, 1, 0, 0.0454545, 0, 0, 1, -0.454545};
+    test_reduced_matrix(arr1, sol1, 3, 4);
 
     return EXIT_SUCCESS;
 }

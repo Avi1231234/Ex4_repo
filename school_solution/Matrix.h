@@ -64,6 +64,9 @@ class Matrix {
     friend std::ostream &operator<<(std::ostream &os, const Matrix &m);
     friend std::istream &operator>>(std::istream &is, Matrix &m);
 
+    //TODO added by us!!!
+    Matrix row_echelon_form() const;
+
 };
 
 Matrix operator*(const float &scalar, const Matrix &matrix);
