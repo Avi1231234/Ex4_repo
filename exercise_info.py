@@ -62,7 +62,7 @@ AUTOTEST_COMPILATION_WRAP_SYMBOLS = []
  programs MUST include a defined symbol with the name __wrap_<symbol>.
  For Example: ["malloc"], and then every compiled program MUST define a function called __wrap_malloc"""
 
-UNIT_TESTS_NUM = 31
+UNIT_TESTS_NUM = 36
 """[OPTIONAL] Number of Standalone Tests. 0 if none."""
 
 COMPARISON_TESTS_NUM = 0

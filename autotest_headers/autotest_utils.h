@@ -83,7 +83,6 @@ int check_equal(const Matrix& A, const Matrix& B)
     // checking correct dimensions
     if(A.get_rows() != B.get_rows() || A.get_cols() != B.get_cols())
     {
-        std::cerr << "Matrix dimensions are not correct. Test " <<counter<< std::endl;
         return 1;
     }
 
@@ -92,7 +91,6 @@ int check_equal(const Matrix& A, const Matrix& B)
     {
         if(!float_compare(A[i], B[i]))
         {
-            std::cerr << "Values are not the same Test " <<counter<< std::endl;
             return 1;
         }
     }
