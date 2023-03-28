@@ -1,7 +1,7 @@
 
 #include "Matrix.h"
 
-#define EPSILON 0.1
+//#define EPSILON 0.1
 
 #define FULL 0.8
 #define HEAVY 0.6
@@ -307,10 +307,11 @@ std::istream &operator>>(std::istream &is, Matrix &m) noexcept(false)
 }
 
 
-//TODO added by us !!!!!!!!!
-
 void row_switcher(Matrix & mat,int row1, int row2) {
-    float tmp = 0.0;
+    /**
+     * Exchanges row1 with row2 in matrix mat
+     */
+    float tmp;
     for(int i = 0;i<mat.get_cols();i++){
         tmp = mat(row1,i);
         mat(row1,i) = mat(row2,i);
@@ -319,45 +320,68 @@ void row_switcher(Matrix & mat,int row1, int row2) {
 }
 
 void multiply_row_by_scalar(Matrix & mat, int row, float scalar){
+    /**
+     * Multiplies each element in row in matrix mat by a scalar
+     */
     for (int i = 0;i<mat.get_cols();i++){
         mat(row,i)*=scalar;
     }
 }
 
 void subtract_rows(Matrix & mat, int row1, int row2,float scalar){
-    // subtract row2 from row1, and multiply by a scalar if needed
+    /**
+     * Element-wise subtraction of row2 from row1, and conducts element-wise multiplication of row2 by a scalar
+     *  if necessrary
+     */
     for (int i = 0;i<mat.get_cols();i++){
         mat(row1,i)-=(mat(row2,i)*scalar);
     }
 }
 
-void reduce_col(Matrix & mat, int row){
-    multiply_row_by_scalar(mat, row,1/mat(row,row));
+void reduce_col(Matrix & mat, int row,int shift){
+    /**
+     * Reduces an entire column in matrix mat. We multiply row by a scalar to make the first non-zero element 1,
+     *  and then we subtract this row from all the others. Reduces all the other numbers in the column to zeroes.
+     */
+    multiply_row_by_scalar(mat, row,1/mat(row,row+shift));
     for (int i = 0; i < mat.get_rows(); ++i) {
         if(i!=row){
-            subtract_rows(mat,i,row,mat(i,row));
+            subtract_rows(mat,i,row,mat(i,row+shift));
         }
     }
 }
 
 Matrix Matrix::reduced_row_echelon_form() const{
-
+    /**
+     * Algorithm for finding and returning the RREF matrix. Leaves the original matrix untouched
+     */
     Matrix mat_copy(*this);
-    for (int i = 0; i < mat_copy.get_rows(); ++i) {
-        if((mat_copy)(i,i)==0){
-            for (int j = i+1; j < mat_copy.get_rows(); ++j) {
-                if((mat_copy)(j,i)!=0){
-                    row_switcher(mat_copy,i,j);
-                    reduce_col(mat_copy,i);
+    bool is_zero_col = true; // A marker for telling whether a column is a zero column
+    int shift  = 0; // Takes into account the shift necessary if the matrix has a column of zeroes
+
+    for (int i = 0; i < mat_copy.get_rows() && i+shift < mat_copy.get_cols(); ++i) {
+
+        if((mat_copy)(i, i + shift) == 0){
+                for (int j = i+1; j < mat_copy.get_rows(); ++j) {
+                        if((mat_copy)(j, i + shift) != 0){
+                            row_switcher(mat_copy,i,j);
+                            reduce_col(mat_copy, i, shift);
+                            is_zero_col = false;
+                        }
                 }
-            }
+
+                if(is_zero_col){  // This control block handles the shift mechanism
+                    shift++; i--;
+                } else{
+                    is_zero_col=true;
+                }
+
         } else {
-            reduce_col(mat_copy,i);
+                reduce_col(mat_copy, i, shift);
         }
     }
     return mat_copy;
 }
-
 
 
 

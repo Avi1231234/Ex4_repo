@@ -14,6 +14,8 @@
 #include <functional>
 #include <type_traits>
 
+#define EPSILON_RREF 0.001
+
 template<typename T>
 struct function_traits;
 
@@ -69,6 +71,44 @@ Matrix get_ordered_matrix(int rows, int cols)
         }
     }
     return A;
+}
+
+bool float_compare(float a, float b)
+{
+    return std::abs(a - b) < EPSILON_RREF;
+}
+
+int check_equal(const Matrix& A, const Matrix& B)
+{
+    // checking correct dimensions
+    if(A.get_rows() != B.get_rows() || A.get_cols() != B.get_cols())
+    {
+        std::cerr << "Matrix dimensions are not correct. Test " <<counter<< std::endl;
+        return 1;
+    }
+
+    // checking correct new values
+    for(int i = 0; i < B.get_cols() * B.get_rows(); i++)
+    {
+        if(!float_compare(A[i], B[i]))
+        {
+            std::cerr << "Values are not the same Test " <<counter<< std::endl;
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+void fill_matrix(Matrix& M, const float* nums)
+{
+    for(int i = 0; i < M.get_rows(); ++i)
+    {
+        for(int j = 0; j < M.get_cols(); ++j)
+        {
+            M[i * M.get_cols() + j] = nums[i * M.get_cols() + j];
+        }
+    }
 }
 
 #endif //EX5_CPP_AUTOTEST_UTILS_H

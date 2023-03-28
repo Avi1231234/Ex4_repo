@@ -16,10 +16,10 @@ Once filled in, you may run the script and it will let you know if everything is
 EX_NUM = 4
 """[REQUIRED] Exercise Number. 1-6"""
 
-REQUIRED_SRC_FILES = ["Matrix.cpp", "Activation.cpp", "Dense.cpp", "MlpNetwork.cpp"]
+REQUIRED_SRC_FILES = []
 """[REQUIRED] List of Required Source Files In Submission. For example: ["file1.c", "file2.c"]"""
 
-REQUIRED_HDR_FILES = ["Matrix.h", "Activation.h", "Dense.h", "MlpNetwork.h"]
+REQUIRED_HDR_FILES = []
 """[REQUIRED] List of Required Header Files In Submission. For example: ["file1.h", "file2.h"]"""
 
 REQUIRED_OTHER_FILES = []
@@ -45,7 +45,7 @@ PRESUBMIT_IO_TESTS = {}
 """[OPTIONAL] Subset of IOTests to preform for presubmit. Only if students' submission contains a main
  method. For example: {1, 3, 7}."""
 
-PRESUBMIT_AST_TESTS = {1}
+PRESUBMIT_AST_TESTS = {}
 """[OPTIONAL] Subset of AST Tests to preform for presubmit. For example: {1, 3, 7}."""
 
 PRESUBMIT_MAKEFILE_TESTS = {}
@@ -62,7 +62,7 @@ AUTOTEST_COMPILATION_WRAP_SYMBOLS = []
  programs MUST include a defined symbol with the name __wrap_<symbol>.
  For Example: ["malloc"], and then every compiled program MUST define a function called __wrap_malloc"""
 
-UNIT_TESTS_NUM = 31
+UNIT_TESTS_NUM = 0
 """[OPTIONAL] Number of Standalone Tests. 0 if none."""
 
 COMPARISON_TESTS_NUM = 0
@@ -96,23 +96,23 @@ IO_STUDENT_OUTPUT_PATH = ""
 The test number will be appended after the prefix. For example: "stu_out_" means the output for test number
 # will be found at stu_out_# """
 
-P_COMPILATION_TESTS_NUM = 12
+P_COMPILATION_TESTS_NUM = 0
 """[OPTIONAL] Number of Positive Compilation Tests. 0 if none."""
 
-N_COMPILATION_TESTS_NUM = 1
+N_COMPILATION_TESTS_NUM = 0
 """[OPTIONAL] Number of Negative Compilation Tests. 0 if none"""
 
-AST_TESTS_NUM = 1
+AST_TESTS_NUM = 0
 """[OPTIONAL] Number of AST Tests. 0 if none"""
 
-FORBIDDEN_FUNCTIONS = ['exit', 'malloc', 'realloc', 'calloc', 'free', 'strlen']
+FORBIDDEN_FUNCTIONS = ["atoi", "exit", "scanf", "fscanf"]
 """List of forbidden functions for exercise."""
 
 PUBLISH_SCHOOL_SOLUTION = False
 """[OPTIONAL] Make a compiled version of the school solution available to students. Currently only 
 supported for exercises with main."""
 
-SUBMISSION_DEADLINE = datetime.datetime(year=2023, month=6, day=14, hour=23, minute=59)
+SUBMISSION_DEADLINE = datetime.datetime(year=2022, month=1, day=1, hour=23, minute=59)
 """Date of submission deadline, used in order to calculate early submission bonuses 
 (most likely only need to change month and day)"""
 
