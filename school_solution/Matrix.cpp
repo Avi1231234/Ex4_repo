@@ -351,7 +351,7 @@ void reduce_col(Matrix & mat, int row,int shift){
     }
 }
 
-Matrix Matrix::reduced_row_echelon_form() const{
+Matrix Matrix::rref() const{
     /**
      * Algorithm for finding and returning the RREF matrix. Leaves the original matrix untouched
      */
