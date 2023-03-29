@@ -473,6 +473,7 @@ ions
 
 \begin_layout Standard
 \align center
+קריאת
 \begin_inset Graphics
 	filename ex4_cpp/Ex4_CPP_2023-master/lyx_stuff/n.png
 	lyxscale 50
@@ -2207,7 +2208,7 @@ C++
 
 \lang english
 \begin_inset Tabular
-<lyxtabular version="3" rows="25" columns="3">
+<lyxtabular version="3" rows="26" columns="3">
 <features islongtable="true" longtabularalignment="left">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -2785,7 +2786,7 @@ Returns a matrix which is the
 </cell>
 </row>
 <row newpage="true">
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2794,7 +2795,7 @@ Returns a matrix which is the
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2805,7 +2806,7 @@ norm()
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2816,6 +2817,46 @@ Returns the Frobenius norm of the given matrix:
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row newpage="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+rref()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+Returns a new Matrix that is the reduced row echelon form of the original.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+The original Matrix should be unchanged (see section 3.1.4)
 \end_layout
 
 \end_inset
@@ -3286,8 +3327,8 @@ Input stream
 \begin_layout Plain Layout
 
 \lang english
-Fills matrix elements: has to read input stream fully, otherwise it's an
- error (don't trust the user to validate it) (see section 3.1.3)
+Fills matrix elements: has to read input streleadam fully, otherwise it's
+ an error (don't trust the user to validate it) (see section 3.1.3)
 \end_layout
 
 \end_inset
@@ -3324,7 +3365,7 @@ for i = 1 to A.rows:
 
 \begin_layout Plain Layout
 
-	for j = 1 to A.cols:
+	for j = 1 to A.cols: lead
 \end_layout
 
 \begin_layout Plain Layout
