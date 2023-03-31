@@ -3,7 +3,7 @@
 
 /**
  * RREF Test 5.
- * Tests matricies with one or two columns of zeroes
+ * Tests matricies with one or two columns of zeroes, and one or two rows of zeroes
  */
 
 
@@ -13,7 +13,7 @@ int test_reduced_matrix(float* arr, float* sol, int rows, int cols)
     Matrix M(rows, cols);
     fill_matrix(M, arr);
     M.plain_print();
-    Matrix R = M.reduced_row_echelon_form();
+    Matrix R = M.rref();
 
     // our solution
     Matrix Jake(rows, cols);
@@ -25,7 +25,7 @@ int test_reduced_matrix(float* arr, float* sol, int rows, int cols)
 int main(){
 
     int rows, cols;
-    int test_1_pass,test_2_pass,test_3_pass,test_4_pass;
+    int test_1_pass,test_2_pass,test_3_pass,test_4_pass,test_5_pass,test_6_pass;
 
     // One empty column, rows<cols
     float arr_17[12] = {2,0,2,6,1,0,1,7,3,0,2,4};
@@ -55,7 +55,22 @@ int main(){
     test_4_pass = test_reduced_matrix(arr_20, sol_20, rows, cols);
 
 
+
+
+    //1 Row of Zeroes
+    float arr21[16] = {0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0};
+    float sol21[16] = {1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0};
+    rows = 4; cols = 4;
+    test_5_pass = test_reduced_matrix(arr21, sol21, rows, cols);
+
+    //2 Row of Zeroes
+    float arr22[20] = {0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0};
+    float sol22[20] = {1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0};
+    rows = 5; cols = 4;
+    test_6_pass = test_reduced_matrix(arr22, sol22, rows, cols);
+
     // If all are zero then passed the test
-    return test_1_pass || test_2_pass || test_3_pass || test_4_pass;
+    return test_1_pass || test_2_pass || test_3_pass || test_4_pass || test_5_pass || test_6_pass;
+
 
 }

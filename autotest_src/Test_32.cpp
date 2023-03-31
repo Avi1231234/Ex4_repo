@@ -17,7 +17,7 @@ int test_reduced_matrix(float* arr, float* sol, int rows, int cols)
     Matrix M(rows, cols);
     fill_matrix(M, arr);
     M.plain_print();
-    Matrix R = M.reduced_row_echelon_form();
+    Matrix R = M.rref();
 
     // our solution
     Matrix Jake(rows, cols);
