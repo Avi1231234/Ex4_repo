@@ -430,7 +430,33 @@ CodingStyleError_readability-named-parameter								-0		You have a function with
 CodingStyleError_readability-qualified-auto								-0		You use auto for pointer, consider using pointer sign.
 CodingStyleError_readability-static-accessed-through-instance								-0		You access static method/property through the instance.
 CodingStyleError_readability-const-return-type								-0		You return const value unnecessarily.
-CodingStyleError_clang-diagnostic-gnu-array-member-paren-init								-0		Parenthesized initialization of a member array is a GNU extension 
+CodingStyleError_clang-diagnostic-gnu-array-member-paren-init								-0		Parenthesized initialization of a member array is a GNU extension
+CodingStyleError_readability-static-accessed-through-instance				-0		Your code access a class's static member through an instance, which reduces readability (and suggests that you may not understand your own code properly).
+CodingStyleError_readability-redundant-string-init							-0		You explicitly initialize a string object as empty, which is redundant.
+CodingStyleError_readability-string-compare									-0		Your code uses string::compare to test equality instead of using the == operator.
+CodingStyleError_readability-qualified-auto									-0		You use the auto keyword on a pointer type, which is bad for readability as it obscures the fact that the variable is a pointer.
+CodingStyleError_readability-else-after-return  -0  you have an else after a return statemet, can be refactored to a more readable code
+CodingStyleError_bugprone-assert-side-effect    -0  an assert has a side effect
+CodingStyleError_modernize-use-nullptr  -0  you should use null instead of NULL
+CodingStyleError_modernize-use-override -0  you have overriden functions without the override keyword
+CodingStyleError_readability-misleading-indentation -0  your indentation is misleading and not readable
+CodingStyleError_readability-misplaced-array-index  -0 you have unusual array index syntax
+CodingStyleError_readability-redundant-access-specifiers    -0 you use redundant member (field and method) access specifiers
+CodingStyleError_readability-redundant-control-flow -0 you have void functions with return in the end of them
+CodingStyleError_readability-redundant-function-ptr-dereference -0  you are dereferencing a function pointer
+CodingStyleError_readability-redundant-member-init  -0 you have unnecessary member initializations
+CodingStyleError_readability-simplify-boolean-expr  -0  you can simplify a boolean expression
+CodingStyleError_readability-static-accessed-through-instance   -0  you used a static function/variable from an instance if a class
+CodingStyleError_readability-string-compare -0 you are using string.compare instead if == or !=
+CodingStyleError_cppcoreguidelines-avoid-goto   -0  dont use goto
+CodingStyleError_cppcoreguidelines-virtual-class-destructor -0  a class destructor should be virtual when using inheritance
+CodingStyleError_cppcoreguidelines-no-malloc    -0  dont use malloc in cpp
+CodingStyleError_bugprone-unhandled-self-assignment -0  didnt handle self assignment
+CodingStyleError_bugprone-undelegated-constructor   -0 you create temporary objects in constructors that look like a function call to another constructor of the same class.
+CodingStyleError_bugprone-suspicious-realloc-usage  -0 unsafe realloc
+CodingStyleError_bugprone-sizeof-expression -0 bug prone use of sizeof
+CodingStyleError_bugprone-exception-escape  -0 you have functions which may throw an exception directly or indirectly, but they should not
+CodingStyleError_llvm-header-guard  -0  you are using header guard incorrectly
 
 
 CodingStylePenalty_0		-0		You have 0 codingStyle errors. No points reduced.
