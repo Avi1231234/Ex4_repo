@@ -112,7 +112,7 @@ PUBLISH_SCHOOL_SOLUTION = False
 """[OPTIONAL] Make a compiled version of the school solution available to students. Currently only 
 supported for exercises with main."""
 
-SUBMISSION_DEADLINE = datetime.datetime(year=2023, month=6, day=14, hour=23, minute=59)
+# SUBMISSION_DEADLINE = datetime.datetime(year=2023, month=6, day=14, hour=23, minute=59)
 """Date of submission deadline, used in order to calculate early submission bonuses 
 (most likely only need to change month and day)"""
 
