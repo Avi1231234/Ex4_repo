@@ -1,0 +1,732 @@
+%% LyX 2.3.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english,hebrew]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9,cp1255]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=3cm,lmargin=1cm,rmargin=1cm,headheight=0cm,headsep=0cm,footskip=2cm}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareTextSymbolDefault{\textquotedbl}{T1}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{listings}
+\addto\captionsenglish{\renewcommand{\lstlistingname}{Listing}}
+\addto\captionshebrew{\renewcommand{\lstlistingname}{רישום קוד}}
+\renewcommand{\lstlistingname}{רישום קוד}
+
+\begin{document}
+\begin{center}
+\noindent\begin{minipage}[t]{1\columnwidth}%
+\textbf{בס\textquotedblright ד}%
+\end{minipage}האוניברסיטה העברית בירושלים
+\par\end{center}
+
+\begin{center}
+בית הספר להנדסה ולמדעי המחשב ע\textquotedbl ש רחל וסלים בנין
+\par\end{center}
+
+\noindent\begin{minipage}[t]{1\columnwidth}%
+\title{סדנאות תכנות בשפת C ו-++C )קורס \inputencoding{latin9}\L{67315}\inputencoding{cp1255}(
+\\
+\inputencoding{latin9}\L{C++}\inputencoding{cp1255} -- תרגיל \inputencoding{latin9}\L{4}}
+\date{\textbf{\textcolor{red}{תאריך ההגשה של התרגיל}}: יום רביעי, ה-{\beginL 14\endL}
+ליוני, {\beginL 2023\endL} -- עד השעה \inputencoding{latin9}\L{22:00}\inputencoding{cp1255}\medskip}%
+\end{minipage}
+\maketitle
+
+\subparagraph{\uline{נושאי התרגיל}: \L{Introduction to C++,Classes,Operator
+Overloading,References,Rule of Three,Exceptions}\protect \\
+}
+
+\subparagraph*{{\large{}אנא הקפידו לקרוא את כל התרגיל מתחילתו ועד סופו לפני שתגשו
+לממשו.}}
+
+\section{רקע}
+
+בתרגיל זה נכתוב תוכנה לזיהוי ספרות הנכתבות בכתב יד. התוכנה שלנו תקבל
+כקלט תמונה של ספרה בין {\beginL ~0\endL}ל-{\beginL ~9\endL}ותחזיר
+כפלט את הספרה אשר זוהתה. נעשה זאת על ידי בניית מודל של רשת נוירונים.
+הרשת שנריץ תגיע לדיוק של~כ-{\beginL ~96\endL}אחוזים בזיהוי ספרות.
+
+\subsection{הקדמה}
+\begin{center}
+קריאת\L{\includegraphics[scale=0.5]{lyx_stuff/Neuromorphic-Computing-and-Neuron-Spike-for-Speedy-AI}}
+\par\end{center}
+
+רשת נוירונים היא מודל בלמידת מכונה המבוסס על מבנה המוח האנושי: נוירון
+מקבל גירוי חשמלי מנוירונים אחרים - אם הגירוי הזה עובר סף מסוים הוא
+שולח בעצמו אות אל נוירונים אחרים. המוח מורכב ממספר רב של נוירונים
+המקושרים זה לזה ברשת מורכבת, ויחד הם מסוגלים לבצע את הפעולות הנדרשות
+ממנו. רשת נוירונים מלאכותית\L{$\text{(Artificial neural network)}$}
+פועלת באופן דומה. ברשתות אלו נעשה שימוש בזיהוי ומיקום של עצמים בתמונה,
+הבנת שפה אנושית וניתוחה, יצירת טקסט ועוד. מוצרים רבים בחיינו משתמשים
+ברשתות נוירונים: עוזרים קוליים\L{$\text{(Amazon Alexa, Apple Siri)}$},
+השלמה אוטומטית לתוכן המייל ב-\L{$\text{Gmail}$}, זיהוי מחלות בתמונות
+סריקה רפואית ועוד.\textbf{}\\
+\textbf{}\\
+\textbf{שימו לב: למידת מכונה בכלל, ורשתות נוירונים בפרט, הינם נושאים
+רחבים ומורכבים ולכן לא יכללו בתוכן תרגיל זה. לצורך מימוש התרגיל אין
+צורך להבין איך ולמה עובדת רשת הנוירונים. הרקע התיאורטי הנדרש יוצג
+בסעיף~\L{$1.2$}, פרטי הרשת שנבנה יובאו בסעיף~}\textbf{{\beginL \L{$2.2$}}\endL}\textbf{,
+והמחלקות למימוש יובאו בסעיף~\L{$3$}.}\\
+\textbf{מומלץ לצפות בסרטון הבא המפרט על המבנה של רשת נוירונים וכיצד
+ניתן לממש אותה באמצעות אלגברה לינארית:}\\
+\inputencoding{latin9}\L{\textbf{\textcolor{blue}{https://www.youtube.com/watch?v=aircAruvnKk}}}
+\inputencoding{cp1255}%
+
+\subsection{רקע תיאורטירקע}
+
+\subsubsection{רשת נוירונים \L{Fully Connected}}
+\begin{itemize}
+\item רשת בנויה משכבות )סעיף~\L{$1.2.2$}(\@.
+\item הקלט של כל שכבה הוא וקטור, והפלט הוא וקטור אחר\@.
+\item הפלט של כל שכבה הוא הקלט של השכבה הבאה\@.
+\item קלט הרשת הוא וקטור המייצג את האובייקט שהרשת תעבד. ברשת שלנו, הוא מייצג
+תמונה של ספרה )סעיף\L{$2.2.2$}(\@.
+\item פלט הרשת הוא וקטור המייצג את המסקנה של הרשת. ברשת שלנו, הוא מייצג
+את הספרה שהרשת זיהתה )סעיף~\L{$2.2.3$}(\@.
+\end{itemize}
+
+\subsubsection{שכבה ברשת}
+
+כל שכבה ברשת מקבלת וקטור \uline{קלט} \L{$x\in\mathbb{R}^{m}$}
+ומחזירה וקטור \uline{פלט} \L{$y\in\mathbb{R}^{n}$} באמצעות הפעולה
+המתמטית הבאה:\L{
+\[
+y=f\left(W\cdot x+b\right)
+\]
+}כאשר:
+\begin{itemize}
+\item \textbf{\L{$W\in M_{n\times m}(\mathbb{R})$}} מטריצה שאיבריה נקראים\textbf{
+המשקולות} של השכבה )\inputencoding{latin9}\L{\textbf{Weights}}\inputencoding{cp1255}(\@.
+\item \L{$b\in\mathbb{R}^{n}$} וקטור שנקרא ה\textbf{היסט )}\inputencoding{latin9}\L{\textbf{Bias}}\inputencoding{cp1255}\textbf{(}
+של השכבה\@.
+\item \L{$f:\mathbb{R}^{n}\to\mathbb{R}^{n}$} \textbf{פונקציית האקטיבציה}
+של השכבה )סעיף \L{$1.2.3$}(\@.
+\end{itemize}
+כלומר, בהינתן וקטור קלט \L{$x\in\mathbb{R}^{m}$}, הוקטור\textbf{
+\L{$y=f(W\cdot x+b)\in\mathbb{R}^{n}$}} יהיה הפלט של השכבה.
+
+\subsubsection{פונקציית אקטיבציה}
+
+פונקציה \L{$f:\mathbb{R}^{n}\to\mathbb{R}^{n}$} אשר מחזירה את התוצאה
+הסופית של שכבה ברשת הנוירונים. פונקציה זו אינה לינארית. בתרגיל נממש
+שתי פונקציות אקטיבציה שונות:
+\begin{itemize}
+\item \textbf{פונקציית }\inputencoding{latin9}\L{\textbf{ReLU}}
+\end{itemize}
+\L{
+\[
+\forall x\in\mathbb{R}\qquad ReLU(x)=\begin{cases}
+x & x\geq0\\
+0 & else
+\end{cases}
+\]
+}
+
+כאשר הפונקציה פועלת על וקטור\L{$x\in\mathbb{R}^{n}$} היא מבצעת את
+הפעולה הזו \uline{על כל קוארדינטה בנפרד}.
+\begin{itemize}
+\item \textbf{פונקציית }\inputencoding{latin9}\L{\textbf{Softmax}}
+\end{itemize}
+\L{
+\[
+\forall x\in\mathbb{R}^{n}\qquad Softmax(x)=\frac{1}{\sum_{k=1}^{n}e^{x_{k}}}\begin{bmatrix}e^{x_{1}}\\
+e^{x_{2}}\\
+e^{x_{3}}\\
+\vdots\\
+e^{x_{n}}
+\end{bmatrix}\in\mathbb{R}^{n}
+\]
+}\L{$x_{k}$} -- הקוארדינטה ה-\L{$k$} של \L{$x\in\mathbb{R}^{n}$}.\\
+\L{$e^{t}$} -- הפונקציה המעריכית \L{$exp(t)$}. לצורך החישוב ניתן
+להשתמש בפונקציה \inputencoding{latin9}\L{std::exp}\inputencoding{cp1255}
+המיובאת מ-\inputencoding{latin9}\L{.cmath}\inputencoding{cp1255}\\
+\\
+הפונקציה מקבלת וקטור \L{$x\in\mathbb{R}^{n}$} וממירה אותו לוקטור
+התפלגות )יש הסבר בסרטון, זה וקטור שאיבריו הם מספרים אי-שליליים שסכומם
+{\beginL 1\endL}( באופן שתואם את הפלט הסופי של הרשת שלנו. בתרגיל זה
+וקטור הוא מטריצה עם טור אחד.
+
+\pagebreak{}
+
+\section{מימוש הרשת}
+
+\subsection{שימוש ב-\L{float} ודיוק הרשת}
+
+\paragraph{\textmd{איברי המטריצה שנממש יהיו מטיפוס }\L{\textmd{float (32-bit)}}\textmd{.}\protect \\
+\textmd{מאופן המימוש של }\L{\textmd{float}}\textmd{ במעבד, פעולות
+האריתמטיקה אינן בהכרח אסוציאטיביות, כלומר לא בהכרח יתקיים: \L{
+\[
+(a+b)+c=a+(b+c)
+\]
+}}}
+
+לכן, כדי להימנע משגיאות נומריות בעת ביצוע כפל מטריצות, אנא ממשו את
+סדר הפעולות לפי ההגדרה המתמטית שלמדתם בלינארית {\beginL 1\endL}:
+
+\L{
+\[
+(A\cdot B)_{ij}=\sum_{k=1}^{n}a_{ik}b_{kj}
+\]
+}
+
+\paragraph{\textmd{הרשת שנריץ מגיעה ל}כ-{\beginL ~96\endL}אחוזי דיוק\textmd{.
+לכן, הרשת עלולה לטעות בחלק מהתמונות שתזינו לה -- זוהי התנהגות תקינה
+של התוכנה. גם אם אחוזי ההצלחה של הרשת שלכם נמוכים במעט מ-}\textmd{{\beginL ~96}\endL}\textmd{אחוזים,
+ייתכן כי הדבר נובע משגיאות נומריות, ולא צפויה הורדה של נקודות במקרה
+זה. עם זאת, אם אחוזי ההצלחה של הרשת נמוכים משמעותית מרף זה, ייתכן
+שהדבר נובע מטעות במימוש.}}
+
+\subsection{תיאור הרשת}
+
+\subsubsection{שכבות הרשת}
+\begin{itemize}
+\item הרשת מורכבת מ-{\beginL ~4\endL}שכבות:\\
+\end{itemize}
+\begin{center}
+\begin{tabular}{|l|l|l|r|}
+\hline 
+\R{\textbf{\textcolor{black}{פונקציית אקטיבציה}}} & \R{\textbf{\textcolor{black}{היסט -\L{$\text{\textbf{Bias} }$}}}} & \R{\textbf{\textcolor{black}{משקולות -}}\inputencoding{latin9}\L{\textbf{\textcolor{black}{Weights }}}} & \R{\inputencoding{cp1255}%
+\textbf{\textcolor{black}{שכבה}}}\tabularnewline
+\hline 
+\R{\textcolor{black}{\L{$Relu$}}} & \R{\textcolor{black}{\L{$b_{1}\in\mathbb{R}^{128}$}}} & \R{\textcolor{black}{\L{$W_{1}\in M_{128\times784}$}}} & \R{\textcolor{black}{1 )כניסה(}}\tabularnewline
+\hline 
+\R{\textcolor{black}{\L{$Relu$}}} & \R{\textcolor{black}{\L{$b_{2}\in\mathbb{R}^{64}$}}} & \R{\textcolor{black}{\L{$W_{2}\in M_{64\times128}$}}} & \R{\textcolor{black}{2}}\tabularnewline
+\hline 
+\R{\textcolor{black}{\L{$Relu$}}} & \R{\textcolor{black}{\L{$b_{3}\in\mathbb{R}^{20}$}}} & \R{\textcolor{black}{\L{$W_{3}\in M_{20\times64}$}}} & \R{\textcolor{black}{3}}\tabularnewline
+\hline 
+\R{\textcolor{black}{\L{$Softmax$}}} & \R{\textcolor{black}{\L{$b_{4}\in\mathbb{R}^{10}$}}} & \R{\textcolor{black}{\L{$W_{4}\in M_{10\times20}$}}} & \R{\textcolor{black}{4 )מוצא(}}\tabularnewline
+\hline 
+\end{tabular}
+\par\end{center}
+\begin{itemize}
+\item כלומר, על מנת לממש את הרשת עלינו לשרשר את רצף הפעולות הבא:
+\end{itemize}
+\L{
+\begin{align*}
+r_{1}=Relu(W_{1}\cdot x+b_{1})\\
+r_{2}=Relu(W_{2}\cdot r_{1}+b_{2})\\
+r_{3}=Relu(W_{3}\cdot r_{2}+b_{3})\\
+r_{4}=Softmax(W_{4}\cdot r_{3}+b_{4})
+\end{align*}
+}
+\begin{itemize}
+\item \L{$x$} -- וקטור הקלט לרשת )סעיף {\beginL \L{$2.2.2$}\endL}(\@.
+\item \L{$r_{i}$} -- הפלט של השכבה ה-\L{$i$}, שהוא גם הקלט לשכבה ה-\L{$i+1$}\@.
+\item \L{$r_{4}$} -- הפלט של השכבה הרביעית, שהוא וקטור הפלט של הרשת )סעיף
+{\beginL \L{$2.2.3$}\endL}(\@.
+\end{itemize}
+
+\subsubsection{וקטור הקלט}
+\begin{itemize}
+\item כל תמונה מקודדת בתור מטריצה \L{$A$} בגודל \L{$28\times28$} של פיקסלים
+בגווני אפור\inputencoding{latin9}\L{(Grayscale)}\inputencoding{cp1255},
+וכל מספר במטריצה הוא ערך בין {\beginL 0\endL} ל-{\beginL 1\endL},
+כלומר \L{$A\in M_{28\times28}\left(\left[0,1\right]\right)$}.
+\item לנוחיותכם, בקבצי העזר נמצא הקובץ \inputencoding{latin9}\L{plot\_img.py}\inputencoding{cp1255}
+אשר מקבל כקלט נתיב לתמונה ומציג אותה בחלון חדש.
+\item וקטור הקלט שיישלח לרשת יהיה וקטור )מטריצה עם עמודה אחת( עם \L{$28\cdot28=748$}
+שורות.
+\end{itemize}
+
+\subsubsection{וקטור הפלט}
+\begin{itemize}
+\item וקטור הפלט מהשכבה האחרונה הוא וקטור התפלגות )וקטור שאיבריו הם מספרים
+אי-שליליים שסכומם \L{$1$} באורך \L{$10$}( \@.
+\item כל אינדקס בווקטור מייצג ספרה בין {\beginL ~0\endL}ל-{\beginL \@.9\endL}
+\item הערך של האינדקס מייצג את הסיכוי שזוהי הספרה בתמונה, לפי הרשת\@.
+\item התשובה שתיתן הרשת היא האינדקס עם הערך המקסימלי, כלומר הספרה הסבירה
+ביותר, וההסתברות של אותה ספרה
+\item במקרה של שיוויון, נחזיר את האינדקס הנמוך מבין השניים
+\item לדוגמא:
+\end{itemize}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline 
+\R{\L{$Value$}} & \R{{\beginL 0\endL}} & \R{\L{$0.003$}} & \R{\L{$0.08$}} & \R{{\beginL 0\endL}} & \R{{\beginL 0\endL}} & \R{{\beginL 0\endL}} & \R{{\beginL 0\endL}} & \R{\L{$0.9$}} & \R{\L{$0.007$}} & \R{\L{$0.01$}}\tabularnewline
+\hline 
+\R{\L{$Index$}} & \R{{\beginL 0\endL}} & \R{{\beginL 1\endL}} & \R{{\beginL 2\endL}} & \R{{\beginL 3\endL}} & \R{{\beginL 4\endL}} & \R{{\beginL 5\endL}} & \R{{\beginL 6\endL}} & \R{{\beginL 7\endL}} & \R{{\beginL 8\endL}} & \R{{\beginL 9\endL}}\tabularnewline
+\hline 
+\end{tabular}\\
+\par\end{center}
+
+\begin{center}
+בהינתן וקטור הפלט הזה, תשובת הרשת תהיה ש\textbf{הספרה בתמונה היא \L{$\boldsymbol{7}$}
+בהסתברות \L{$\boldsymbol{90\%}$}}
+\par\end{center}
+
+\subsection{מהלך ריצת התוכנית}
+
+\textbf{\textcolor{red}{שימו לב:}}\textbf{ חלק זה ממומש עבורכם בקובץ
+}\inputencoding{latin9}\L{\textbf{main.cpp}}\inputencoding{cp1255}\textbf{
+המצורף לכם עם קבצי התרגיל }\textbf{\uline{מלבד הפונקציה \L{\mbox{$readFileToMatrix$}}
+שעליכם לממש על מנת להשתמש}}\textbf{\@.}
+
+התוכנה תקבל בשורת הפקודה נתיבים לקבצי המשקולות וההיסטים כקבצים בינאריים.
+
+נריץ את התוכנה עם המשקולות וההיסטים כך:
+
+\begin{center}\vspace{0.1cm}\textbf{}\\
+\inputencoding{latin9}\L{\texttt{\$}./mlpnetwork w1 w2 w3 w4 b1 b2
+b3 b4}\inputencoding{cp1255}\textbf{}\\
+\vspace{0.1cm}\end{center}
+\begin{itemize}
+\item \L{$w_{i}$} -- נתיב לקובץ המשקולות של השכבה ה-\L{$i$}
+\item \L{$b_{i}$} -- נתיב לקובץ ההיסט של השכבה ה-\L{$i$}
+\end{itemize}
+כאשר התוכנה רצה היא ממתינה לקלט מהמשתמש. הקלט יהיה נתיב לקובץ של תמונה
+המכילה ספרה. התוכנה:
+\begin{enumerate}
+\item תפתח את הקובץ ותטען את התמונה למטריצה
+\item תכניס את המטריצה אל הרשת כקלט
+\item כאשר התקבלה תוצאה, התוכנה תדפיס את התמונה, את הספרה שהרשת זיהתה ובאיזו
+הסתברות.\\
+לדוגמא )מתוך פתרון בית הספר(:\\
+\\
+\L{\includegraphics[scale=0.7,bb = 0 0 200 100, draft, type=eps]{ex4_cpp/Ex4_CPP_2023-master/lyx_stuff/Picture1.png}}
+\item התוכנה תמתין לקלט חדש
+\end{enumerate}
+כאשר נזין לתוכנה q -- התוכנה תצא עם קוד {\beginL 0\endL}.
+
+\section{המחלקות למימוש}
+
+הינכם נדרשים לממש את המחלקות הבאות\uline{ בלבד}. אין להגיש מחלקות
+נוספות.
+\begin{itemize}
+\item בטבלאות המובאות לפניכם רשומות כלל הפונקציות והאופרטורים שעליכם לממש.
+\item אין להרחיב את ה-\inputencoding{latin9}\L{API}\inputencoding{cp1255}
+המפורט, כלומר אין להוסיף פונקציות \inputencoding{latin9}\L{public}\inputencoding{cp1255}
+למחלקות )ניתן להוסיף פונקציות \inputencoding{latin9}\L{private}\inputencoding{cp1255}(.
+\item שימו לב שעליכם לכתוב את כל החתימות של ה IPA בקבצי h. ולכתוב את המימושים
+בקבצי ppc. 
+\item \textbf{חישבו היטב} על החתימה של כל פונקציה: מהו ערך ההחזרה שלה? האם
+היא משנה את האובייקט הנוכחי? כיצד נגדיר את הטיפוס של הארגומנטים שלה?
+\item \textbf{שימו לב:} \uline{עליכם להחליט} איפה יש להשתמש ב-\inputencoding{latin9}\L{const}\inputencoding{cp1255},
+איפה המשתנים וערכי ההחזרה צריכים להיות\inputencoding{latin9}\L{ by
+value }\inputencoding{cp1255}או~\inputencoding{latin9}\L{by reference}\inputencoding{cp1255},
+והאם לממש כל פונקציה כחלק מהמחלקה\inputencoding{latin9}\L{(member
+function)}\inputencoding{cp1255} או כפונקציה העומדת בפני עצמה \inputencoding{latin9}\L{(standalone,
+non-member function)}\inputencoding{cp1255}.
+\item \textbf{\textcolor{red}{איסור על שימוש ב-}}\inputencoding{latin9}\L{\textbf{\textcolor{red}{STL}}}\inputencoding{cp1255}\textbf{\textcolor{red}{:
+בתרגיל זה אין להשתמש בספריית }}\inputencoding{latin9}\L{\textbf{\textcolor{red}{STL}}}\inputencoding{cp1255}\textbf{\textcolor{red}{{}
+של }}\inputencoding{latin9}\L{\textbf{\textcolor{red}{C++}}}\inputencoding{cp1255}\textbf{\textcolor{red}{,
+ובפרט לא במבני נתונים כמו}}\inputencoding{latin9}\L{\textbf{\textcolor{red}{.std::vector }}}
+\end{itemize}
+
+\subsection{המחלקה \L{$\text{Matrix}$}}
+
+מחלקה זו מייצגת אובייקט של מטריצה )גם וקטור הינו מטריצה, בעלת עמודה
+אחת ו-\inputencoding{latin9}\L{ n}\inputencoding{cp1255}שורות(. נזכיר
+כי איברי המטריצה יהיו מטיפוס \L{$\text{float}$}.
+\selectlanguage{english}%
+\begin{flushleft}
+\inputencoding{latin9}\begin{longtable}[l]{|l|l|>{\raggedright}p{0.5\linewidth}|}
+\hline 
+\textbf{Description} & \textbf{Name} & \textbf{Comments}\tabularnewline
+\hline 
+\multicolumn{3}{|c|}{\textbf{Constructors}}\tabularnewline
+\hline 
+Constructor & Matrix(int rows, int cols) & Constructs Matrix of size\textbf{ rows}$\times$\textbf{cols}.\\
+Inits all elements to\textbf{ 0}.\tabularnewline
+\hline 
+Default Constructor & Matrix() & Constructs Matrix of size 1$\times$1.\\
+Inits the single element to\textbf{ 0}.\tabularnewline
+\hline 
+Copy Constructor & Matrix(Matrix m) & Constructs matrix from another Matrix m.\tabularnewline
+\hline 
+Destructor & \textasciitilde Matrix() & \R{\foreignlanguage{hebrew}{}}\tabularnewline
+\hline 
+\newpage
+\hline 
+\multicolumn{3}{|c|}{\textbf{Methods \& Functions}}\tabularnewline
+\hline 
+Getter & get\_rows() & returns the amount of rows as int.\tabularnewline
+\hline 
+Getter & get\_cols() & returns the amount of cols as int.\tabularnewline
+\hline 
+\R{\selectlanguage{hebrew}%
+\selectlanguage{english}}%
+ & transpose() & Transforms a matrix into its\textbf{ transpose} matrix,
+
+i.e $(A.transpose())_{ij}=A_{ji}$.\\
+Supports function call chaining/concatenation (\inputencoding{cp1255}\R{שרשור
+פונקציות}\inputencoding{latin9}), for example:\\
+\textcolor{teal}{Matrix a(5,4), b(4,5);}\\
+\textcolor{teal}{a.transpose();}\textcolor{black}{// a.get\_rows ==
+4, a.get\_cols == 5}\textcolor{teal}{}\\
+\textcolor{teal}{b.transpose().transpose();}\textcolor{black}{// b
+is same as before after calling transpose twice (chaining)}\tabularnewline
+\hline 
+\R{\selectlanguage{hebrew}%
+\selectlanguage{english}}%
+ & vectorize() & Transforms a matrix into a column vector(section 3.1.2).\\
+Supports function call chaining/concatenation. For example:\\
+\textcolor{teal}{Matrix m(5,4); ...}\\
+\textcolor{teal}{m.vectorize();}\\
+\textcolor{teal}{m.get\_cols() == 1}\\
+\textcolor{teal}{m.get\_rows() == 20 }
+
+\textcolor{teal}{m.transpose().vectorize().transpose();} // an example
+of function call chaining/concatenation\tabularnewline
+\hline 
+\R{\selectlanguage{hebrew}%
+\selectlanguage{english}}%
+ & plain\_print() & Prints matrix elements, no return value.\\
+Prints space after each element (including last\\
+element in row).\\
+Prints newline after each row (including last row).\tabularnewline
+\hline 
+\R{\selectlanguage{hebrew}%
+\selectlanguage{english}}%
+ & dot(Matrix m) & Returns a matrix which is the\textbf{ elementwise multiplication}
+(Hadamard product) of this matrix with another matrix m:\\
+$\forall i,j:\left(A.dot(B)\right)_{ij}=A_{ij}\cdot B_{ij}$\tabularnewline
+\hline 
+\R{\selectlanguage{hebrew}%
+\selectlanguage{english}}%
+ & norm() & Returns the Frobenius norm of the given matrix:$A.norm()=\sqrt{\underset{i,j}{\sum}A_{ij}^{2}}$\tabularnewline
+\newpage
+\hline 
+\R{\selectlanguage{hebrew}%
+\selectlanguage{english}}%
+ & rref() & Returns a new Matrix that is the reduced row echelon form of the original. 
+
+The original Matrix should be unchanged (see section 3.1.4)\tabularnewline
+\hline 
+\newpage
+\hline 
+\multicolumn{3}{|c|}{\textbf{Operators}}\tabularnewline
+\hline 
++ & Matrix addition & Matrix a, b;$\to$ a + b\tabularnewline
+\hline 
+= & Assignment & Matrix a, b;$\to$ a = b\tabularnewline
+\hline 
+{*} & Matrix multiplication & Matrix a, b;$\to$ a {*} b\tabularnewline
+\hline 
+{*} & Scalar multiplication on the right & Matrix m; float c;$\to$ m {*} c\tabularnewline
+\hline 
+{*} & Scalar multiplication on the left & Matrix m; float c;$\to$ c {*} m\tabularnewline
+\hline 
++= & Matrix addition accumulation & Matrix a, b;$\to$ a += b\tabularnewline
+\hline 
+() & Parenthesis indexing & For cell (i,j) in matrix m:\\
+m(i,j) will return the element in cell (i,j) in matrix m.
+
+For example:
+
+\textcolor{teal}{Matrix m(5,4);}
+
+\textcolor{teal}{m(1,3) = 10;}\\
+\textcolor{teal}{float x = m(1,3);}\textcolor{black}{{} // x equals
+10.0}\tabularnewline
+\hline 
+{[}{]} & Brackets indexing & Let m be a matrix with i rows and j columns. Then m has i{*}j cells. 
+
+For every 0<=k<i{*}j \\
+m{[}k{]} will return the k'th element as if m is represented as a
+vector (see section 3.1.2).
+
+For example:
+
+\textcolor{teal}{Matrix m(5,4);}
+
+\textcolor{teal}{m{[}3{]} = 10;}\\
+\textcolor{teal}{float x = m{[}3{]};}\textcolor{black}{{} // x equals
+10.0}\tabularnewline
+\hline 
+\R{\R{\selectlanguage{hebrew}%
+\inputencoding{cp1255}\textless\textless\selectlanguage{english}}%
+} & \inputencoding{latin9}Output stream & Pretty print of matrix as (see section 3.1.1)\tabularnewline
+\hline 
+\R{\R{\selectlanguage{hebrew}%
+\inputencoding{cp1255}\textgreater\textgreater\selectlanguage{english}}%
+} & \inputencoding{latin9}Input stream & Fills matrix elements: has to read input streleadam fully, otherwise
+it's an error (don't trust the user to validate it) (see section 3.1.3)\tabularnewline
+\hline 
+\end{longtable}
+\par\end{flushleft}
+\selectlanguage{hebrew}%
+
+\subsubsection{הדפסת תמונה ממטריצה}
+
+כדי להדפיס את התמונה שמיוצגת במטריצה \L{$A$} באמצעות אופרטור \textless\textless{}
+, נשתמש בפסאודו-קוד הבא:
+
+\L{
+\begin{lstlisting}
+for i = 1 to A.rows:
+	for j = 1 to A.cols: lead
+		if A(i,j) > 0.1:
+			print"**" (double asterisk)
+		else:
+			print"  "  (double space)
+	print newline
+\end{lstlisting}
+}
+
+\subsubsection{אינדקס יחיד לזכרון דו-מימדי}
+
+מטריצה \L{$A$} הינה אובייקט דו-מימדי, ולכן אנו זקוקים לשני אינדקסים
+על מנת לגשת לאיבר בה. פעמים רבות, נוח יותר לגשת לכל איבר במטריצה באמצעות
+אינדקס יחיד. נבצע את המיפוי מזוג אינדקסים לאינדקס יחיד באופן הבא:
+
+\L{
+\[
+A(i,j)==A[i\cdot\text{rowsize}+j]
+\]
+}
+\begin{itemize}
+\item \L{$i$} -- אינדקס השורה
+\item \L{$j$} -- אינדקס העמודה
+\item \L{$rowsize$} -- אורך השורה )מספר העמודות(
+\end{itemize}
+לדוגמה, תהי \L{$A\in M_{3\times4}$}, כלומר בעלת {\beginL 3\endL}
+שורות ו-{\beginL ~4\endL}עמודות. מתקיים:\L{
+\[
+A(2,1)==A[2\cdot4+1]==A[9]
+\]
+}
+
+וודאו שאתם מבינים מדוע מיפוי זה הינו חד-חד-ערכי ועל.
+
+\subsubsection{קריאת תמונה מקובץ בינארי למטריצה}
+
+כדי לקרוא קובץ בינארי מתוך \L{$\text{Input stream}$}, עליכם להשתמש
+בפונקציה \L{$\text{std::istream::read}$} , שמקבלת \L{$\text{char}\ast$}
+ומספר בתים\textbackslash תווים לקרוא. תוכלו למצוא תיעוד ומידע על
+הפונקציה בלינקים הבאים:
+
+\L{
+\[
+\text{https://www.tutorialspoint.com/reading-and-writing-binary-file-in-c-cplusplus}
+\]
+}\L{
+\[
+\text{https://www.cplusplus.com/reference/istream/istream/read/}
+\]
+}שימו לב, במקרה הזה תוכלו לעשות\L{$\text{casting}$} מפורש ל - \L{$\text{char\ensuremath{\ast}}$}.
+
+\subsubsection{ייצוג מטריצה מדורגת מצומצמת -\L{$\textbf{Reduced Row Echelon Form}$}}
+\begin{center}
+\L{\includegraphics[scale=0.9]{RREF_instructions}}\L{
+\begin{align*}
+\textbf{RREF Matrix calculator:}\\
+\end{align*}
+}\L{
+\[
+\text{https://www.emathhelp.net/calculators/linear-algebra/reduced-row-echelon-form-rref-calculator/?i=%5B%5B2%2C4%2C8%2C1%5D%2C%5B16%2C3%2C5%2C0%5D%2C%5B1%2C0%2C4%2C3%5D%5D
+}
+\]
+}\L{$\textbf{RREF Wikipedia Reference:}$}\L{
+\[
+\text{https://en.wikipedia.org/wiki/Row\_echelon\_form#Reduced\_row\_echelon\_form}
+\]
+}\L{$\textbf{Signed Zero Wikipedia Reference:}$}\L{
+\[
+\text{https://en.wikipedia.org/wiki/Signed\_zero}
+\]
+}
+\par\end{center}
+
+\subsection{קבצי\L{$\boldsymbol{\text{Activation}}$}}
+
+בקבצים אלה נגדיר את פעולת פונקציות האקטיבציה. בקבצי ה-\L{$\text{Activation}$}
+עליכם לממש את פונקציות האקטיבציה \L{$\text{relu}$} ו-\L{$\text{softmax}$}
+כפונקציות השייכות ל-\L{$\text{namespace activation}$}. כלומר, על
+מנת לקרוא לפונקציות צריך לרשום \L{$\text{\text{activation::relu}}$}
+או \L{$\text{activation::softmax}$}. על פונקציות אקטיבציה לעבוד על
+כל המטריצה, ולא רק על הטור הראשון, ומחזירה את אותם מימדים כמו המטריצה
+המקורית.\\
+\textbf{טיפ: }שימו לב שנשתמש בתרגיל זה ב-\L{$\text{ function pointers}$}על
+מנת לגשת לפונקציות אלו. מומלץ להגדיר \L{$\text{typedef}$} של פוינטר
+לפונקצית אקטיבציה ולהשתמש בו בתוכנית.
+
+\subsection{המחלקה \L{$\text{Dense}$}}
+
+מחלקה זו מייצגת שכבה ברשת הנוירונים. אין לממש קונסטרקטור דיפולטיבי.
+\selectlanguage{english}%
+\begin{flushleft}
+\inputencoding{latin9}\begin{tabular}{|l|l|>{\raggedright}p{0.5\linewidth}|}
+\hline 
+\textbf{Description} & \textbf{Name} & \textbf{Comments}\tabularnewline
+\hline 
+Constructor & Dense(weights, bias, ActivationFunction) & Inits a new layer with given parameters.\\
+C'tor accepts 2 matrices and activation function\tabularnewline
+\hline 
+\multicolumn{1}{|l}{\R{\selectlanguage{hebrew}%
+\selectlanguage{english}}%
+} & \multicolumn{2}{l|}{\textbf{Methods}}\tabularnewline
+\hline 
+Getter & get\_weights() & Returns the weights of this layer.\tabularnewline
+\hline 
+Getter & get\_bias() & Returns the bias of this layer.\tabularnewline
+\hline 
+Getter & get\_activation() & Returns the activation function of this layer.\tabularnewline
+\hline 
+\multicolumn{1}{|l}{\R{\selectlanguage{hebrew}%
+\selectlanguage{english}}%
+} & \multicolumn{2}{l|}{\textbf{Operators}}\tabularnewline
+\hline 
+() & Parenthesis & Applies the layer on input and returns output matrix\linebreak{}
+Layers operate as per section 2.2.1
+
+e.g:
+
+\textcolor{teal}{Dense layer(w, b, act);}
+
+\textcolor{teal}{Matrix output = layer(input);}\tabularnewline
+\hline 
+\end{tabular}
+\par\end{flushleft}
+\selectlanguage{hebrew}%
+
+\subsection{המחלקה \L{$\text{MlpNetwork}$}}
+
+מחלקה זו תשמש אותנו לסדר את השכבות השונות למבנה רשת ותאפשר הכנסה של
+קלט לרשת וקבלת הפלט המתאים. מחלקה זו מממשת ספציפית את הרשת המתוארת
+במסמך זה )סעיף \inputencoding{latin9}\L{2.2.1}\inputencoding{cp1255}(.\\
+שימו לב ש\inputencoding{latin9}\L{ struct digit }\inputencoding{cp1255}מומש
+עבורכם בקבצים שקיבלתם.\\
+\uline{נקודה למחשבה}: מה היה נדרש לממש במחלקה זו על מנת לתמוך ברשת
+עם מספר כללי n שכבות וגודל שכבות כלשהו הניתן \textbf{בזמן ריצת התוכנית}?
+\selectlanguage{english}%
+\begin{flushleft}
+\inputencoding{latin9}\begin{tabular}{|l|l|>{\raggedright}p{0.5\linewidth}|}
+\hline 
+\textbf{Description} & \textbf{Name} & \textbf{Comments}\tabularnewline
+\hline 
+Constructor & MlpNetwork(weights{[}{]}, biases{[}{]}) & Accepts 2 arrays of matrices, size 4 each.\\
+One for weights and one for biases.\\
+Constructs the network described (sec. 2.2).\tabularnewline
+\hline 
+\multicolumn{1}{|l}{\R{\selectlanguage{hebrew}%
+\selectlanguage{english}}%
+} & \multicolumn{2}{l|}{\textbf{Operators}}\tabularnewline
+\hline 
+() & Parenthesis & Applies the entire network on input.\\
+Returns the digit struct.\\
+\textcolor{teal}{MlpNetwork m(...);}\\
+\textcolor{teal}{digit output = m(img);}\tabularnewline
+\hline 
+\end{tabular}
+\par\end{flushleft}
+\selectlanguage{hebrew}%
+
+\section{טיפול בשגיאות}
+
+בתרגיל זה נדרוש מכם להשתמש ב-\inputencoding{latin9}\L{exceptions}\inputencoding{cp1255}.
+\begin{itemize}
+\item חשבו בעצמכם היכן יכולות להיות שגיאות )בדיקת הקלטים של הפונקציות, בדיקת
+ערכי החזרה של פעולות שונות, ועוד(.
+\item במקרה של שגיאה:
+\begin{itemize}
+\item זרקו חריגה)\inputencoding{latin9}\L{exception}\inputencoding{cp1255}(
+מתאימה בהתאם להוראות הבאות:
+\begin{itemize}
+\item אם התבצעה שגיאה הנוגעת לאורכים ומימדים בעייתיים, זרקו\L{$\text{std::length\_error }$}\@.
+\item אם התבצעה שגיאה שקשורה לגישה למיקום לא חוקי, זרקו\L{$\text{std::out\_of\_range }$}\@.
+\item אם התבצעה שגיאה עקב קלט לא נכון מהמשתמש זרקו\L{$\text{std::runtime\_error }$}\@.
+\item במקרה שהקצאת זיכרון נכשלה \uline{אינכם נדרשים} לזרוק חריגה )החריגה\L{$\text{std::bad\_alloc }$}
+תיזרק באופן אוטומטי במקרה זה\@. \\
+לפירוט,קראו: \inputencoding{latin9}\L{\textbf{\textcolor{blue}{https://en.cppreference.com/w/cpp/memory/new/bad\_alloc}}}\inputencoding{cp1255}(.
+אין זה אומר שלא יהיה לכם דליפות זיכרון, חישבו מתי נרצה לא לזרוק ישר
+אחרי הקצאה כושלת \L{$\text{bad\_alloc}$} ונרצה לשחרר זיכרון קודם.
+שימו לב שמימוש טוב ויעיל ימנע בעיות כאלה.
+\end{itemize}
+\item בתרגיל זה\textbf{ }\textbf{\uline{אינכם}}\textbf{ נדרשים לשחרר
+את הזכרון} \textbf{במקרה של שגיאה)כיוון שזאת אחריות משתמש הספרייה
+לשחרר את הזיכרון(\@.}
+\end{itemize}
+\end{itemize}
+
+\section{קימפול והרצה}
+
+בקבצי העזר לתרגיל הניתנים לכם, מצורף קובץ ~\inputencoding{latin9}\L{Makefile}\inputencoding{cp1255}
+על מנת לקמפל את התוכנה. על התוכנה להתקמפל באמצעות הפקודה הבאה:
+
+\begin{center}\vspace{-0.9cm}\textbf{}\\
+\inputencoding{latin9}\L{\texttt{}}~\\
+\L{\texttt{make mlpnetwork}}\inputencoding{cp1255}\textbf{}\\
+\vspace{-0.4cm}\end{center}\textbf{}\\
+נריץ את התוכנית כמפורט בסעיף \inputencoding{latin9}\L{.2.3}
+
+\subsection{\L{$\text{Presubmit}$}}
+
+\inputencoding{cp1255}%
+קובץ ה \L{$\text{presubmit}$} זמין בנתיב \L{
+\[
+\text{\textasciitilde proglab/presubmit/ex4/srcs/presubmit.cpp}
+\]
+}
+
+\section{הקבצים להגשה}
+\selectlanguage{english}%
+\begin{center}
+\inputencoding{latin9}\begin{tabular*}{0.3\linewidth}{@{\extracolsep{\fill}}ll}
+Matrix.h & Matrix.cpp\tabularnewline
+Activation.h & Activation.cpp\tabularnewline
+Dense.h & Dense.cpp\tabularnewline
+MlpNetwork.h & MlpNetwork.cpp\tabularnewline
+\end{tabular*}
+\par\end{center}
+\selectlanguage{hebrew}%
+\inputencoding{cp1255}%
+
+\section{הערות וסיכום}
+
+\subsection{הנחיות כלליות}
+\begin{itemize}
+\item קראו בקפידה את הוראות תרגיל זה ואת ההנחיות להגשת תרגילים שבאתר הקורס.
+\item \textbf{מעבר ל-}\inputencoding{latin9}\L{\textbf{C++}}\inputencoding{cp1255}\textbf{:}
+זכרו להשתמש בפונקציות ובספריות של \inputencoding{latin9}\L{C++}\inputencoding{cp1255}
+ולא \inputencoding{latin9}\L{C}\inputencoding{cp1255}. למשל, נשתמש
+ב-\inputencoding{latin9}\L{\texttt{new}}\inputencoding{cp1255} ו-\inputencoding{latin9}\L{\texttt{delete}}\inputencoding{cp1255}
+ולא ב-\inputencoding{latin9}\L{\texttt{malloc}}\inputencoding{cp1255}
+ו-\inputencoding{latin9}\L{\texttt{free}}\inputencoding{cp1255}, ב-\inputencoding{latin9}\L{\texttt{std::string}}\inputencoding{cp1255}
+ולא ב-\inputencoding{latin9}\L{\texttt{char{*}}}\inputencoding{cp1255},
+ובספריה \inputencoding{latin9}\L{<cmath>}\inputencoding{cp1255} במקום
+\inputencoding{latin9}\L{math.h}\inputencoding{cp1255}.
+\item \textbf{\textcolor{red}{איסור על שימוש ב-}}\inputencoding{latin9}\L{\textbf{\textcolor{red}{STL}}}\inputencoding{cp1255}\textbf{\textcolor{red}{:
+נזכיר בשנית כי בתרגיל זה נאסר השימוש בספריית }}\inputencoding{latin9}\L{\textbf{\textcolor{red}{STL}}}\inputencoding{cp1255}\textbf{\textcolor{red}{{}
+של }}\inputencoding{latin9}\L{\textbf{\textcolor{red}{C++}}}\inputencoding{cp1255}\textbf{\textcolor{red}{,
+ובפרט אסור להשתמש במבני נתונים כגון }}\inputencoding{latin9}\L{\textbf{\textcolor{red}{std::vector}}}
+\inputencoding{cp1255}%
+\item \textbf{ניהול זיכרון דינמי:} כזכור, הקצאת זיכרון דינמית \uline{מחייבת}
+את שחרור הזיכרון, למעט במקרים בהם ישנה שגיאה המחייבת סגירת התוכנית
+באופן מיידי עם קוד שגיאה )כלומר קוד יציאה {\beginL 1\endL}(. תוכלו
+להיעזר בתוכנה \inputencoding{latin9}\L{valgrind}\inputencoding{cp1255}
+כדי לחפש דליפות זיכרון בתוכנית שכתבתם.
+\item \textbf{שימוש ב-}\inputencoding{latin9}\L{\textbf{reference}}\inputencoding{cp1255}\textbf{:
+}הקפידו לא להעתיק \inputencoding{latin9}\L{by value}\inputencoding{cp1255}
+משתנים כבדים, אלא להעבירם היכן שניתן \inputencoding{latin9}\L{by reference}\inputencoding{cp1255}.
+\item \textbf{שימוש ב-}\inputencoding{latin9}\L{\textbf{const}}\inputencoding{cp1255}\textbf{:
+}הקפידו להשתמש במילה השמורה \inputencoding{latin9}\L{const}\inputencoding{cp1255}
+היכן שנדרש מכם בהגדרת הפונקציות והארגומנטים.
+\item \textbf{סקריפט }\inputencoding{latin9}\L{\textbf{Pre-submission}}\inputencoding{cp1255}\textbf{:}
+ודאו כי התרגיל שלכם עובר את ה-\inputencoding{latin9}\L{Pre-submission
+Script}\inputencoding{cp1255} \textbf{ללא שגיאות או אזהרות}.
+\item \textbf{כפילויות קוד: }שימו לב שיש בתרגיל זה המון הזדמנויות למחזר
+קוד. אל תעבדו קשה, תעבדו חכם!
+\item אתם יכולים להניח שקבצי הקלט לא יהיו גדולים מהגודל של המטריצה. אבל
+לא ניתן להניח שקבצי הקלט לא קטנים מגודל המטריצה.
+\item אנחנו מעודדים אתכם לכתוב טסטים ולבדוק את עצמכם במהלך פתירת התרגיל.
+\item {\huge{}הכי חשוב: שיהיה לכם בהצלחה :(}{\huge\par}
+\end{itemize}
+
+\end{document}
