@@ -424,13 +424,11 @@ CodingStyleError_readability-avoid-const-params-in-decls					-0		You have const 
 CodingStyleError_readability-make-member-function-const						-0		You have a member function that could have been marked const.
 CodingStyleError_readability-uppercase-literal-suffix						-0		You have a literal with a lowercase suffix in your code.
 CodingStyleError_readability-simplify-boolean-expr							-0		You have a boolean expression using boolean constants that can be simplified.
-CodingStyleError_readability-function-size -10 You have a function which is longer than 50 lines.
-CodingStyleError_readability-braces-around-statements -0 You have a statement (such as for, if, etc.) without braces.
+CodingStyleError_readability-misleading-indentation							-0		You have some misleading indentation in your code.
+CodingStyleError_readability-braces-around-statements						-0		You have a statement (such as for, if, etc.) without braces.
+CodingStyleError_readability-function-size									-10		You have a function which is longer than 50 lines.
 CodingStyleError_readability-named-parameter								-0		You have a function with an unnamed parameter.
-CodingStyleError_readability-qualified-auto								-0		You use auto for pointer, consider using pointer sign.
-CodingStyleError_readability-static-accessed-through-instance								-0		You access static method/property through the instance.
-CodingStyleError_readability-const-return-type								-0		You return const value unnecessarily.
-CodingStyleError_clang-diagnostic-gnu-array-member-paren-init								-0		Parenthesized initialization of a member array is a GNU extension
+CodingStyleError_readability-const-return-type								-0		You have a function returning const by-value which is redundant.
 CodingStyleError_readability-static-accessed-through-instance				-0		Your code access a class's static member through an instance, which reduces readability (and suggests that you may not understand your own code properly).
 CodingStyleError_readability-redundant-string-init							-0		You explicitly initialize a string object as empty, which is redundant.
 CodingStyleError_readability-string-compare									-0		Your code uses string::compare to test equality instead of using the == operator.
@@ -439,15 +437,10 @@ CodingStyleError_readability-else-after-return  -0  you have an else after a ret
 CodingStyleError_bugprone-assert-side-effect    -0  an assert has a side effect
 CodingStyleError_modernize-use-nullptr  -0  you should use null instead of NULL
 CodingStyleError_modernize-use-override -0  you have overriden functions without the override keyword
-CodingStyleError_readability-misleading-indentation -0  your indentation is misleading and not readable
 CodingStyleError_readability-misplaced-array-index  -0 you have unusual array index syntax
 CodingStyleError_readability-redundant-access-specifiers    -0 you use redundant member (field and method) access specifiers
-CodingStyleError_readability-redundant-control-flow -0 you have void functions with return in the end of them
 CodingStyleError_readability-redundant-function-ptr-dereference -0  you are dereferencing a function pointer
 CodingStyleError_readability-redundant-member-init  -0 you have unnecessary member initializations
-CodingStyleError_readability-simplify-boolean-expr  -0  you can simplify a boolean expression
-CodingStyleError_readability-static-accessed-through-instance   -0  you used a static function/variable from an instance if a class
-CodingStyleError_readability-string-compare -0 you are using string.compare instead if == or !=
 CodingStyleError_cppcoreguidelines-avoid-goto   -0  dont use goto
 CodingStyleError_cppcoreguidelines-virtual-class-destructor -0  a class destructor should be virtual when using inheritance
 CodingStyleError_cppcoreguidelines-no-malloc    -0  dont use malloc in cpp
