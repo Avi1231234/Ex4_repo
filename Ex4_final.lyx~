@@ -19,7 +19,7 @@
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts false
+\use_non_tex_fonts true
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -475,7 +475,7 @@ ions
 \align center
 קריאת
 \begin_inset Graphics
-	filename ex4_cpp/Ex4_CPP_2023-master/lyx_stuff/n.png
+	filename lyx_stuff/Neuromorphic-Computing-and-Neuron-Spike-for-Speedy-AI.jpg
 	lyxscale 50
 	scale 50
 
