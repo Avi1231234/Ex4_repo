@@ -11,7 +11,7 @@ int test_reduced_matrix(float* arr, float* sol, int rows, int cols)
     // student's solution
     Matrix M(rows, cols);
     fill_matrix(M, arr);
-    M.plain_print();
+
     Matrix R = M.rref();
 
     // our solution
