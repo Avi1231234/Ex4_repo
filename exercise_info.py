@@ -37,7 +37,7 @@ FORBIDDEN_FILES = []
 SUBMISSION_HAS_MAIN = False
 """[REQUIRED] boolean describing whether or not the students' submission contains a main method."""
 
-BONUS_MACRO = ""
+BONUS_MACRO = "BONUS_SUBMITTED"
 """[OPTIONAL] string containing preprocessor definition to pass in compilation command if bonus was 
 submitted. For example: "BONUS_SUBMITTED". Required if BONUS_FILES is not empty."""
 
@@ -62,7 +62,7 @@ AUTOTEST_COMPILATION_WRAP_SYMBOLS = []
  programs MUST include a defined symbol with the name __wrap_<symbol>.
  For Example: ["malloc"], and then every compiled program MUST define a function called __wrap_malloc"""
 
-UNIT_TESTS_NUM = 36
+UNIT_TESTS_NUM = 31
 """[OPTIONAL] Number of Standalone Tests. 0 if none."""
 
 COMPARISON_TESTS_NUM = 0
@@ -81,7 +81,7 @@ MAKEFILE_TESTS = {}
 """[OPTIONAL] Dictionary where keys are makefile targets and values are lists of files that should be 
 created by target. For example: {'all': ['some_file.o', 'some_program']} """
 
-BONUS_TESTS_NUM = 0
+BONUS_TESTS_NUM = 5
 """[OPTIONAL] Number of Bonus Tests. 0 if none"""
 
 IO_TESTS_NUM = 0
