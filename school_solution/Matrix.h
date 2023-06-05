@@ -1,4 +1,10 @@
 
+
+
+#ifndef MATRIX_H
+#define MATRIX_H
+
+
 #include <iostream>
 #include <cmath>
 
@@ -9,8 +15,6 @@
 #define STREAM_ERR "ERROR: Problem with input stream"
 #define SIZE_ERR "ERROR: input stream size does not match matrix"
 
-#ifndef MATRIX_H
-#define MATRIX_H
 
 class Matrix {
  public:

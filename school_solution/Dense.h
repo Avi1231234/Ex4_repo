@@ -1,10 +1,12 @@
 //
 // Created by yuval on 01-Oct-21.
 //
-#include "Activation.h"
+
 
 #ifndef DENSE_H
 #define DENSE_H
+
+#include "Activation.h"
 
 class Dense {
  public:
