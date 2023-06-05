@@ -165,15 +165,15 @@ Test_30_2                   -2  Dense getter test failed: wrong weights
 Test_31_1                   -2  Matrix mult with scalar test failed: Wrong dimensions
 Test_31_2                   -2  Matrix mult with scalar test failed: Wrong values
 
-Test_32_1                   -2  Matrix RREF test failed: Wrong dimensions or wrong values
+TestBonus_32_0              +1  Matrix RREF test1 passed!
 
-Test_33_1                   -2  Matrix RREF test failed: Wrong dimensions or wrong values
+TestBonus_33_0              +1  Matrix RREF test2 passed!
 
-Test_34_1                   -2  Matrix RREF test failed: Wrong dimensions or wrong values
+TestBonus_34_0              +1  Matrix RREF test3 passed!
 
-Test_35_1                   -2  Matrix RREF test failed: Wrong dimensions or wrong values
+TestBonus_35_0              +1  Matrix RREF test4 passed!
 
-Test_36_1                   -2  Matrix RREF test failed: Wrong dimensions or wrong values
+TestBonus_36_0              +1  Matrix RREF test5 passed!
 
 
 
@@ -229,11 +229,11 @@ Test_28_valgrind            -0  Matrix operator=: leak detected
 Test_29_valgrind            -0  Matrix::operator=: leak detected
 Test_30_valgrind            -0  Dense getter test failed: leak detected
 Test_31_valgrind            -0  Matrix mult with scalar test failed: leak detected
-Test_32_valgrind            -0  Matrix RREF test failed: leak detected
-Test_33_valgrind            -0  Matrix RREF test failed: leak detected
-Test_34_valgrind            -0  Matrix RREF test failed: leak detected
-Test_35_valgrind            -0  Matrix RREF test failed: leak detected
-Test_36_valgrind            -0  Matrix RREF test failed: leak detected
+Test_32_valgrind            -0  Matrix RREF test failed: leak detected. This does not add to the valgrind count (Bonus)
+Test_33_valgrind            -0  Matrix RREF test failed: leak detected. This does not add to the valgrind count (Bonus)
+Test_34_valgrind            -0  Matrix RREF test failed: leak detected. This does not add to the valgrind count (Bonus)
+Test_35_valgrind            -0  Matrix RREF test failed: leak detected. This does not add to the valgrind count (Bonus)
+Test_36_valgrind            -0  Matrix RREF test failed: leak detected. This does not add to the valgrind count (Bonus)
 
 
 
@@ -268,11 +268,11 @@ Test_28_segfault            -3  Matrix operator=: segfault
 Test_29_segfault            -2  Matrix::operator=: segfault
 Test_30_segfault            -2  Dense getter test failed: segfault
 Test_31_segfault            -2  Matrix mult with scalar test failed: segfault
-Test_32_segfault            -2  Matrix RREF test failed: segfault
-Test_33_segfault            -2  Matrix RREF test failed: segfault
-Test_34_segfault            -2  Matrix RREF test failed: segfault
-Test_35_segfault            -2  Matrix RREF test failed: segfault
-Test_36_segfault            -2  Matrix RREF test failed: segfault
+Test_32_segfault            -0  Matrix RREF test failed: segfault. This does not add to the valgrind count (Bonus)
+Test_33_segfault            -0  Matrix RREF test failed: segfault. This does not add to the valgrind count (Bonus)
+Test_34_segfault            -0  Matrix RREF test failed: segfault. This does not add to the valgrind count (Bonus)
+Test_35_segfault            -0  Matrix RREF test failed: segfault. This does not add to the valgrind count (Bonus)
+Test_36_segfault            -0  Matrix RREF test failed: segfault. This does not add to the valgrind count (Bonus)
 
 Test_1_timeout              -2  Matrix::operator= test failed: timeout
 Test_2_timeout              -2  Matrix::operator[] test failed: timeout
@@ -305,11 +305,11 @@ Test_28_timeout             -3  Matrix operator=: timeout
 Test_29_timeout             -2  Matrix::operator=: timeout
 Test_30_timeout             -2  Dense getter test failed: timeout
 Test_31_timeout             -2  Matrix mult with scalar test failed: timeout
-Test_32_timeout             -2  Matrix RREF test failed: timeout
-Test_33_timeout             -2  Matrix RREF test failed: timeout
-Test_34_timeout             -2  Matrix RREF test failed: timeout
-Test_35_timeout             -2  Matrix RREF test failed: timeout
-Test_36_timeout             -2  Matrix RREF test failed: timeout
+Test_32_timeout             -0  Matrix RREF test failed: timeout
+Test_33_timeout             -0  Matrix RREF test failed: timeout
+Test_34_timeout             -0  Matrix RREF test failed: timeout
+Test_35_timeout             -0  Matrix RREF test failed: timeout
+Test_36_timeout             -0  Matrix RREF test failed: timeout
 
 
 
@@ -343,12 +343,12 @@ Test_27_compile             -3  Matrix constructor: compile
 Test_28_compile             -3  Matrix operator=: compile
 Test_29_compile             -2  Matrix::operator=: compile
 Test_30_compile             -2  Dense getter test failed: compile
-Test_31_compile             -2  Matrix mult with scalar test failed: compile
-Test_32_compile             -2  Matrix RREF test failed: compile
-Test_33_compile             -2  Matrix RREF test failed: compile
-Test_34_compile             -2  Matrix RREF test failed: compile
-Test_35_compile             -2  Matrix RREF test failed: compile
-Test_36_compile             -2  Matrix RREF test failed: compile
+Test_31_compile             -0  Matrix mult with scalar test failed: compile. This does not add to the valgrind count
+Test_32_compile             -0  Matrix RREF test failed: compile. This does not add to the valgrind count (Bonus)
+Test_33_compile             -0  Matrix RREF test failed: compile. This does not add to the valgrind count (Bonus)
+Test_34_compile             -0  Matrix RREF test failed: compile. This does not add to the valgrind count (Bonus)
+Test_35_compile             -0  Matrix RREF test failed: compile. This does not add to the valgrind count (Bonus)
+Test_36_compile             -0  Matrix RREF test failed: compile. This does not add to the valgrind count (Bonus)
 
 ######################### Valgrind Codes #########################
 
