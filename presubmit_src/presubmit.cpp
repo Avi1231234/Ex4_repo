@@ -334,6 +334,47 @@ void compile_dense()
     std::cout << "Passed: All Dense functions exist" << std::endl << std::endl;
 }
 
+namespace bonus{
+
+using std::cout;
+using std::endl;
+
+template<typename T>
+struct HasBonusMethod
+{
+    template<typename U, U (U::*)() const> struct SFINAE {};
+    template<typename U> static char Test(SFINAE<U, &U::rref>*);
+    template<typename U> static int Test(...);
+    static const bool has = sizeof(Test<T>(0)) == sizeof(char);
+};
+
+template<typename TMatrix>
+void has_bonus(const TMatrix& m, std::true_type)
+{
+	(void) m.rref();
+        cout << "Bonus sumbission detected!" << endl;
+	cout << "Please note this only checks the presence of the bonus method declaration, and does not guarantee its correctness" << endl;
+}
+template<typename TMatrix>
+void has_bonus(const TMatrix& m, std::false_type)
+{	
+	(void) m;
+        cout << "Bonus sumbission NOT detected!" << endl;
+}
+
+template<typename TMatrix>
+void has_bonus(const TMatrix& m)
+{
+	cout << "------------------------------------------------------------------------" << endl;
+	cout << "Checking whether bonus was submitted...\n" << endl;
+    has_bonus(m,
+        std::integral_constant<bool, HasBonusMethod<TMatrix>::has>());
+	cout << "\n------------------------------------------------------------------------" << endl;
+
+}
+
+}
+
 /**
  * Program's main
  * @param argc count of args
@@ -365,6 +406,8 @@ int main()
     MlpNetwork mlp(weights, biases);
 
     mlpCli(mlp);
+
+    bonus::has_bonus(Matrix());
 
     std::cout << "All presubmit tests finished!" << std::endl;
     return EXIT_SUCCESS;
