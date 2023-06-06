@@ -229,15 +229,15 @@ Test_28_valgrind            -0  Matrix operator=: leak detected
 Test_29_valgrind            -0  Matrix::operator=: leak detected
 Test_30_valgrind            -0  Dense getter test failed: leak detected
 Test_31_valgrind            -0  Matrix mult with scalar test failed: leak detected
-TestBonus_1_valgrind        -0  Matrix RREF test failed: leak detected. This does not add to the valgrind count (Bonus)
+TestBonus_1_valgrind        -0  leak detected. This does not add to the valgrind count (Bonus)
 
-TestBonus_2_valgrind        -0  Matrix RREF test failed: leak detected. This does not add to the valgrind count (Bonus)
+TestBonus_2_valgrind        -0  leak detected. This does not add to the valgrind count (Bonus)
 
-TestBonus_3_valgrind        -0  Matrix RREF test failed: leak detected. This does not add to the valgrind count (Bonus)
+TestBonus_3_valgrind        -0  leak detected. This does not add to the valgrind count (Bonus)
 
-TestBonus_4_valgrind        -0  Matrix RREF test failed: leak detected. This does not add to the valgrind count (Bonus)
+TestBonus_4_valgrind        -0  leak detected. This does not add to the valgrind count (Bonus)
 
-TestBonus_5_valgrind        -0  Matrix RREF test failed: leak detected. This does not add to the valgrind count (Bonus)
+TestBonus_5_valgrind        -0  leak detected. This does not add to the valgrind count (Bonus)
 
 
 
