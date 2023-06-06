@@ -272,11 +272,11 @@ Test_28_segfault            -3  Matrix operator=: segfault
 Test_29_segfault            -2  Matrix::operator=: segfault
 Test_30_segfault            -2  Dense getter test failed: segfault
 Test_31_segfault            -2  Matrix mult with scalar test failed: segfault
-TestBonus_1_segfault        -0  Matrix RREF test failed: segfault. This does not add to the valgrind count (Bonus)
-TestBonus_2_segfault        -0  Matrix RREF test failed: segfault. This does not add to the valgrind count (Bonus)
-TestBonus_3_segfault        -0  Matrix RREF test failed: segfault. This does not add to the valgrind count (Bonus)
-TestBonus_4_segfault        -0  Matrix RREF test failed: segfault. This does not add to the valgrind count (Bonus)
-TestBonus_5_segfault        -0  Matrix RREF test failed: segfault. This does not add to the valgrind count (Bonus)
+TestBonus_1_segfault        -0  Matrix RREF test failed: segfault. This does not add to the segfault count (Bonus)
+TestBonus_2_segfault        -0  Matrix RREF test failed: segfault. This does not add to the segfault count (Bonus)
+TestBonus_3_segfault        -0  Matrix RREF test failed: segfault. This does not add to the segfault count (Bonus)
+TestBonus_4_segfault        -0  Matrix RREF test failed: segfault. This does not add to the segfault count (Bonus)
+TestBonus_5_segfault        -0  Matrix RREF test failed: segfault. This does not add to the segfault count (Bonus)
 
 Test_1_timeout              -2  Matrix::operator= test failed: timeout
 Test_2_timeout              -2  Matrix::operator[] test failed: timeout
@@ -347,12 +347,12 @@ Test_27_compile             -3  Matrix constructor: compile
 Test_28_compile             -3  Matrix operator=: compile
 Test_29_compile             -2  Matrix::operator=: compile
 Test_30_compile             -2  Dense getter test failed: compile
-Test_31_compile             -0  Matrix mult with scalar test failed: compile. This does not add to the valgrind count
-TestBonus_1_compile         -0  Matrix RREF test failed: compile. (Bonus)
-TestBonus_2_compile         -0  Matrix RREF test failed: compile. (Bonus)
-TestBonus_3_compile         -0  Matrix RREF test failed: compile. (Bonus)
-TestBonus_4_compile         -0  Matrix RREF test failed: compile. (Bonus)
-TestBonus_5_compile         -0  Matrix RREF test failed: compile. (Bonus)
+Test_31_compile             -0  Matrix mult with scalar test did not compile
+TestBonus_1_compile         -0  Matrix RREF test did not compile. (Bonus)
+TestBonus_2_compile         -0  Matrix RREF test did not compile. (Bonus)
+TestBonus_3_compile         -0  Matrix RREF test did not compile. (Bonus)
+TestBonus_4_compile         -0  Matrix RREF test did not compile. (Bonus)
+TestBonus_5_compile         -0  Matrix RREF test did not compile. (Bonus)
 
 ######################### Valgrind Codes #########################
 
