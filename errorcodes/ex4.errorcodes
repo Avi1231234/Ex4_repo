@@ -309,11 +309,11 @@ Test_28_timeout             -3  Matrix operator=: timeout
 Test_29_timeout             -2  Matrix::operator=: timeout
 Test_30_timeout             -2  Dense getter test failed: timeout
 Test_31_timeout             -2  Matrix mult with scalar test failed: timeout
-TestBonus_1_timeout         -0  Matrix RREF test failed: timeout
-TestBonus_2_timeout         -0  Matrix RREF test failed: timeout
-TestBonus_3_timeout         -0  Matrix RREF test failed: timeout
-TestBonus_4_timeout         -0  Matrix RREF test failed: timeout
-TestBonus_5_timeout         -0  Matrix RREF test failed: timeout
+TestBonus_1_timeout         -0  Matrix RREF test failed: timeout (Bonus)
+TestBonus_2_timeout         -0  Matrix RREF test failed: timeout (Bonus)
+TestBonus_3_timeout         -0  Matrix RREF test failed: timeout (Bonus)
+TestBonus_4_timeout         -0  Matrix RREF test failed: timeout (Bonus)
+TestBonus_5_timeout         -0  Matrix RREF test failed: timeout (Bonus)
 
 
 
@@ -348,11 +348,11 @@ Test_28_compile             -3  Matrix operator=: compile
 Test_29_compile             -2  Matrix::operator=: compile
 Test_30_compile             -2  Dense getter test failed: compile
 Test_31_compile             -0  Matrix mult with scalar test failed: compile. This does not add to the valgrind count
-TestBonus_1_compile         -0  Matrix RREF test failed: compile. This does not add to the valgrind count (Bonus)
-TestBonus_2_compile         -0  Matrix RREF test failed: compile. This does not add to the valgrind count (Bonus)
-TestBonus_3_compile         -0  Matrix RREF test failed: compile. This does not add to the valgrind count (Bonus)
-TestBonus_4_compile         -0  Matrix RREF test failed: compile. This does not add to the valgrind count (Bonus)
-TestBonus_5_compile         -0  Matrix RREF test failed: compile. This does not add to the valgrind count (Bonus)
+TestBonus_1_compile         -0  Matrix RREF test failed: compile. (Bonus)
+TestBonus_2_compile         -0  Matrix RREF test failed: compile. (Bonus)
+TestBonus_3_compile         -0  Matrix RREF test failed: compile. (Bonus)
+TestBonus_4_compile         -0  Matrix RREF test failed: compile. (Bonus)
+TestBonus_5_compile         -0  Matrix RREF test failed: compile. (Bonus)
 
 ######################### Valgrind Codes #########################
 
