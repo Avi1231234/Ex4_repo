@@ -470,10 +470,10 @@ CodingStylePenalty_10		-10		You have 10 codingStyle errors.
 
 EarlySubmissionDays_1 +1 Assignment submitted 1 day early
 EarlySubmissionDays_2 +2 Assignment submitted 2 day early
-EarlySubmissionDays_3 +3 Assignment submitted 3 day early
-EarlySubmissionDays_4 +3 Assignment submitted 4 day early
+EarlySubmissionDays_3 +2 Assignment submitted 3 day early
+EarlySubmissionDays_4 +2 Assignment submitted 4 day early
 EarlySubmissionDays_5 +3 Assignment submitted 5 day early
-EarlySubmissionDays_6 +4 Assignment submitted 6 day early
+EarlySubmissionDays_6 +3 Assignment submitted 6 day early
 EarlySubmissionDays_7 +5 Assignment submitted 7 day early
 EarlySubmissionDays_8 +5 Assignment submitted 8 day early
 EarlySubmissionDays_9 +5 Assignment submitted 9 day early
