@@ -28,10 +28,16 @@ int main()
     {
         check_bad_dims_add();
     }
-    catch(const std::domain_error &error)
+    catch(const std::length_error &error)
     {
         std::cout << error.what() << std::endl;
         return 0;
+    }
+    catch(const std::domain_error &error)
+    {
+        std::cerr << error.what() << std::endl;
+        return 0;
+
     }
     catch(const std::exception &error)
     {

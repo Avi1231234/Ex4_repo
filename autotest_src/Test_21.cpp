@@ -27,6 +27,12 @@ int main()
     {
         check_bad_dims_mult();
     }
+    catch(const std::length_error &error)
+    {
+        std::cerr << error.what() << std::endl;
+        return 0;
+
+    }
     catch(const std::domain_error &error)
     {
         std::cerr << error.what() << std::endl;

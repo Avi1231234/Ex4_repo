@@ -32,8 +32,9 @@ int main()
     }
     catch(const std::domain_error &error)
     {
-        std::cout << error.what() << std::endl;
+        std::cerr << error.what() << std::endl;
         return 0;
+
     }
     catch(const std::exception &error)
     {
