@@ -175,15 +175,15 @@ TestBonus_4_0              +1  Matrix RREF test4 passed!
 
 TestBonus_5_0              +1  Matrix RREF test5 passed!
 
-TestBonus_1_0              +0  Matrix RREF test1 failed!
+TestBonus_1_1              +0  Matrix RREF test1 failed!
 
-TestBonus_2_0              +0  Matrix RREF test2 failed!
+TestBonus_2_1              +0  Matrix RREF test2 failed!
 
-TestBonus_3_0              +0  Matrix RREF test3 failed!
+TestBonus_3_1              +0  Matrix RREF test3 failed!
 
-TestBonus_4_0              +0  Matrix RREF test4 failed!
+TestBonus_4_1              +0  Matrix RREF test4 failed!
 
-TestBonus_5_0              +0  Matrix RREF test5 failed!
+TestBonus_5_1              +0  Matrix RREF test5 failed!
 
 
 
