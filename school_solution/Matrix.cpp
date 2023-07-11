@@ -1,8 +1,6 @@
 
 #include "Matrix.h"
 
-//#define EPSILON 0.1
-
 #define FULL 0.8
 #define HEAVY 0.6
 #define MEDIUM 0.4

@@ -115,7 +115,7 @@ void mlpCli(MlpNetwork &mlp)
         if(readFileToMatrix("presubmit.inim" + std::to_string(i), img))
         {
             Matrix imgVec = img;
-            digit output = mlp(imgVec);
+            digit output = mlp(imgVec.vectorize());
             std::cout << "Image processed:" << std::endl
                       << img << std::endl;
             std::cout << "Mlp result: " << output.value <<
