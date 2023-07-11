@@ -11,20 +11,7 @@
  */
 
 
-int test_reduced_matrix(float* arr, float* sol, int rows, int cols)
-{
-    // student's solution
-    Matrix M(rows, cols);
-    fill_matrix(M, arr);
 
-    Matrix R = M.rref();
-
-    // our solution
-    Matrix Jake(rows, cols);
-    fill_matrix(Jake, sol);
-
-    return check_equal(Jake, R);
-}
 
 int main(){
 
