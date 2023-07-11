@@ -79,7 +79,7 @@ bool float_compare(float a, float b)
     return std::abs(a - b) < EPSILON_RREF;
 }
 
-int check_equal(const Matrix& A, const Matrix& B)
+int check_equal(Matrix& A, Matrix& B)
 {
     // checking correct dimensions
     if(A.get_rows() != B.get_rows() || A.get_cols() != B.get_cols())
