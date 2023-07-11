@@ -1,7 +1,6 @@
 //
 // Created by User on 7/20/2020.
 //
-#define BRACKETS_TEST
 #include "autotest_utils.h"
 
 int check_brackets()

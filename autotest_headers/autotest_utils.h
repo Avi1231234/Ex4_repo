@@ -16,42 +16,6 @@
 
 #define EPSILON_RREF 0.001
 
-#ifndef BRACKETS_TEST
-
-const float & Matrix::operator[](int i) const noexcept(false) {
-    if (i >= (this->get_rows() * this->get_cols()) || i < 0) {
-        throw std::out_of_range(INDEX_ERR);
-    }
-    return _matrix[i];
-}
-
-float & Matrix::operator[](int i) noexcept(false) {
-    if (i >= (this->get_rows() * this->get_cols()) || i < 0) {
-        throw std::out_of_range(INDEX_ERR);
-    }
-
-    return _matrix[i];
-}
-
-#endif
-
-#ifndef PARENTHESIS_TEST
-
-const float &Matrix::operator()(int i, int j) const noexcept(false) {
-    if (i >= get_rows() || j >= get_cols() || i < 0 || j < 0) {
-        throw std::out_of_range(INDEX_ERR);
-    }
-    return _matrix[i * get_cols() + j];
-}
-
-float &Matrix::operator()(int i, int j) noexcept(false) {
-    if (i >= get_rows() || j >= get_cols() || i < 0 || j < 0) {
-        throw std::out_of_range(INDEX_ERR);
-    }
-    return _matrix[i * get_cols() + j];
-}
-
-#endif
 
 template<typename T>
 struct function_traits;
